@@ -1,0 +1,1845 @@
+<!DOCTYPE html>            <html lang="en">            <head>              <meta charset="UTF-8" />              <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />              <meta http-equiv="X-UA-Compatible" content="IE=edge" />              <title>IM SDK for Unity3D 使用指南</title>              <style>.code,sub,sup{position:relative}button,hr,input{overflow:visible}audio,canvas,progress,video{display:inline-block}html,legend{box-sizing:border-box}.btn:focus,a:focus{box-shadow:0 0 0 .2rem rgba(87,100,198,.15)}code,mark,progress,sub,sup{vertical-align:baseline}.hljs-emphasis,.text-italic,dfn{font-style:italic}.text-break,pre code{word-wrap:break-word}.btn,a,button{outline:0}.table,table{border-collapse:collapse}li ul li,ul ul{list-style-type:circle}.btn,.text-clip,.text-ellipsis,code{white-space:nowrap}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section{display:block}hr{box-sizing:content-box}a{background-color:transparent}a:active,a:hover{outline-width:0}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0}sub{bottom:-.25em}sup{top:-.5em}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:inherit;font-size:inherit;line-height:inherit;margin:0}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}fieldset{border:0;margin:0;padding:0}legend{color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}summary{display:list-item}[hidden],template{display:none}.btn,mark{display:inline-block}*,::after,::before{box-sizing:inherit}html{font-size:10px;line-height:1.42857143;-webkit-tap-highlight-color:transparent}body{margin:0;background:#fff;color:#50596c;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",sans-serif;font-size:1.4rem;overflow-x:hidden;text-rendering:optimizeLegibility}a.active,a:active,a:focus,a:hover{color:#3b49af;text-decoration:underline}.btn,.btn.active,.btn.btn-clear,.btn:active,.btn:focus,.btn:hover,.docs-content .anchor:focus,.docs-content .anchor:hover,.grid-hero h2 u,.menu .menu-item,.menu .menu-item>a,.nav .nav-item a,a{text-decoration:none}h1,h2,h3,h4,h5,h6{color:inherit;font-weight:300;line-height:1.2;margin-bottom:1.5rem;margin-top:0}h6{font-size:1.6rem}p{line-height:2.4rem;margin:0 0 1rem}a,ins,u{-webkit-text-decoration-skip:ink edges;text-decoration-skip:ink edges}blockquote{margin-left:0}blockquote p:last-child{margin-bottom:0}blockquote cite{color:#acb3c2}ol,ul{margin:2rem 0 2rem 2rem;padding:0}ol ol,ol ul,ul ol,ul ul{margin:1.5rem 0 1.5rem 2rem}ol li,ul li{margin-top:1rem}ul{list-style:disc}ol{list-style:decimal}ol ol{list-style-type:lower-alpha}dl dt{font-weight:700}dl dd{margin:.5rem 0 1.5rem}mark{background:#ffe9b3;border-radius:.2rem;color:#50596c;line-height:1;padding:.3rem .4rem}.table td,.table th{padding:1.5rem 1rem}.table{border-spacing:0;text-align:left;width:100%}.table.table-striped tbody tr:nth-of-type(odd){background:#f8f9fa}.table tbody tr.active,.table.table-hover tbody tr:hover,.table.table-striped tbody tr.active{background:#f0f1f4}.table td{border-bottom:.1rem solid #f0f1f4}.table th{border-bottom:.1rem solid #727e96}.btn{-webkit-appearance:none;-moz-appearance:none;appearance:none;background:#fff;border:.1rem solid #5764c6;border-radius:.2rem;color:#5764c6;cursor:pointer;font-size:1.4rem;height:3.2rem;line-height:2rem;padding:.5rem .8rem;text-align:center;transition:all .2s ease;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle}.btn:focus{background:#fbfbfe}.btn:hover{background:#5764c6;border-color:#4c59c2;color:#fff}.btn.active,.btn:active{background:#4c59c2;border-color:#3e4cb6;color:#fff}.btn.disabled,.btn:disabled,.btn[disabled]{cursor:default;opacity:.5;pointer-events:none}.hand,button:hover{cursor:pointer}.btn.btn-primary{background:#5764c6;border-color:#4c59c2;color:#fff}.btn.btn-primary:focus,.btn.btn-primary:hover{background:#4452c0;border-color:#3e4cb6;color:#fff}.btn.btn-primary.active,.btn.btn-primary:active{background:#3f4eba;border-color:#3b49af;color:#fff}.btn.btn-primary.loading::after{border-bottom-color:#fff;border-left-color:#fff}.btn.btn-link{background:0 0;border-color:transparent;color:#5764c6}.btn.btn-link.active,.btn.btn-link:active,.btn.btn-link:focus,.btn.btn-link:hover{color:#3b49af}.btn.btn-sm{font-size:1.2rem;height:2.4rem;padding:.1rem .8rem}.btn.btn-lg{font-size:1.6rem;height:4rem;padding:.9rem .8rem}.btn.btn-block{display:block;width:100%}.btn.btn-action{padding-left:0;padding-right:0;width:3.2rem}.btn.btn-action.btn-sm{width:2.4rem}.btn.btn-action.btn-lg{width:4rem}.btn.btn-clear{background:0 0;border:0;color:currentColor;height:1.6rem;line-height:1.6rem;margin-left:.4rem;margin-right:-.2rem;opacity:.45;padding:0 .2rem;width:1.6rem}.btn.btn-clear:hover{opacity:.85}.btn.btn-clear::before{content:"\2715"}.btn-group{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap}.btn-group .btn{-webkit-flex:1 0 auto;-ms-flex:1 0 auto;flex:1 0 auto}.btn-group .btn:first-child:not(:last-child){border-bottom-right-radius:0;border-top-right-radius:0}.btn-group .btn:not(:first-child):not(:last-child){border-radius:0;margin-left:-.1rem}.btn-group .btn:last-child:not(:first-child){border-bottom-left-radius:0;border-top-left-radius:0;margin-left:-.1rem}.code,.menu,.menu .menu-item>a{border-radius:.2rem}.btn-group .btn.active,.btn-group .btn:active,.btn-group .btn:focus,.btn-group .btn:hover{z-index:1}.btn-group.btn-group-block{display:flex;display:-ms-flexbox;display:-webkit-flex}.btn-group.btn-group-block .btn{-webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0}code{background:#fdf4f4;display:inline-block}.code{color:#50596c;line-height:2rem}.code::before{color:#acb3c2;content:attr(data-lang);font-size:1.2rem;position:absolute;right:1rem;top:.2rem}.code code{background:#f8f9fa;color:inherit;display:block;line-height:inherit;overflow-x:auto;padding:2rem;width:100%}.img-responsive{display:block;height:auto;max-width:100%}.img-fit-cover{object-fit:cover}.img-fit-contain{object-fit:contain}.video-responsive{display:block;overflow:hidden;padding:0;position:relative;width:100%}.video-responsive::before{content:"";display:block;padding-bottom:56.25%}.video-responsive embed,.video-responsive iframe,.video-responsive object{bottom:0;height:100%;left:0;position:absolute;right:0;top:0;width:100%}.video-responsive video{height:auto;max-width:100%;width:100%}.video-responsive-4-3::before{padding-bottom:75%}.video-responsive-1-1::before{padding-bottom:100%}.figure{margin:0 0 1rem}.figure .figure-caption{color:#727e96;margin-top:1rem}.container{margin-left:auto;margin-right:auto;padding-left:1rem;padding-right:1rem;width:100%}.container.grid-1280{max-width:130rem}.container.grid-960{max-width:98rem}.container.grid-480{max-width:50rem}.column,img{max-width:100%}.columns{display:flex;display:-ms-flexbox;display:-webkit-flex;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;margin-left:-1rem;margin-right:-1rem}.columns.col-gapless{margin-left:0;margin-right:0}.columns.col-gapless .column{padding-left:0;padding-right:0}.columns.col-oneline{-webkit-flex-wrap:nowrap;-ms-flex-wrap:nowrap;flex-wrap:nowrap;overflow-x:auto}.column{-webkit-flex:1;-ms-flex:1;flex:1;padding:1rem}.column.col-1,.column.col-10,.column.col-11,.column.col-12,.column.col-2,.column.col-3,.column.col-4,.column.col-5,.column.col-6,.column.col-7,.column.col-8,.column.col-9{-webkit-flex:none;-ms-flex:none;flex:none}.col-12{width:100%}.col-11{width:91.66666667%}.col-10{width:83.33333333%}.col-9{width:75%}.col-8{width:66.66666667%}.col-7{width:58.33333333%}.col-6{width:50%}.col-5{width:41.66666667%}.col-4{width:33.33333333%}.col-3{width:25%}.col-2{width:16.66666667%}.col-1{width:8.33333333%}@media screen and (max-width:1280px){.col-xl-1,.col-xl-10,.col-xl-11,.col-xl-12,.col-xl-2,.col-xl-3,.col-xl-4,.col-xl-5,.col-xl-6,.col-xl-7,.col-xl-8,.col-xl-9{-webkit-flex:none;-ms-flex:none;flex:none}.col-xl-12{width:100%}.col-xl-11{width:91.66666667%}.col-xl-10{width:83.33333333%}.col-xl-9{width:75%}.col-xl-8{width:66.66666667%}.col-xl-7{width:58.33333333%}.col-xl-6{width:50%}.col-xl-5{width:41.66666667%}.col-xl-4{width:33.33333333%}.col-xl-3{width:25%}.col-xl-2{width:16.66666667%}.col-xl-1{width:8.33333333%}}@media screen and (max-width:960px){.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9{-webkit-flex:none;-ms-flex:none;flex:none}.col-lg-12{width:100%}.col-lg-11{width:91.66666667%}.col-lg-10{width:83.33333333%}.col-lg-9{width:75%}.col-lg-8{width:66.66666667%}.col-lg-7{width:58.33333333%}.col-lg-6{width:50%}.col-lg-5{width:41.66666667%}.col-lg-4{width:33.33333333%}.col-lg-3{width:25%}.col-lg-2{width:16.66666667%}.col-lg-1{width:8.33333333%}}@media screen and (max-width:840px){.col-md-1,.col-md-10,.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9{-webkit-flex:none;-ms-flex:none;flex:none}.col-md-12{width:100%}.col-md-11{width:91.66666667%}.col-md-10{width:83.33333333%}.col-md-9{width:75%}.col-md-8{width:66.66666667%}.col-md-7{width:58.33333333%}.col-md-6{width:50%}.col-md-5{width:41.66666667%}.col-md-4{width:33.33333333%}.col-md-3{width:25%}.col-md-2{width:16.66666667%}.col-md-1{width:8.33333333%}}@media screen and (max-width:600px){.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9{-webkit-flex:none;-ms-flex:none;flex:none}.col-sm-12{width:100%}.col-sm-11{width:91.66666667%}.col-sm-10{width:83.33333333%}.col-sm-9{width:75%}.col-sm-8{width:66.66666667%}.col-sm-7{width:58.33333333%}.col-sm-6{width:50%}.col-sm-5{width:41.66666667%}.col-sm-4{width:33.33333333%}.col-sm-3{width:25%}.col-sm-2{width:16.66666667%}.col-sm-1{width:8.33333333%}}.show-lg,.show-md,.show-sm,.show-xl,.show-xs{display:none!important}@media screen and (max-width:480px){.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9{-webkit-flex:none;-ms-flex:none;flex:none}.col-xs-12{width:100%}.col-xs-11{width:91.66666667%}.col-xs-10{width:83.33333333%}.col-xs-9{width:75%}.col-xs-8{width:66.66666667%}.col-xs-7{width:58.33333333%}.col-xs-6{width:50%}.col-xs-5{width:41.66666667%}.col-xs-4{width:33.33333333%}.col-xs-3{width:25%}.col-xs-2{width:16.66666667%}.col-xs-1{width:8.33333333%}.hide-xs{display:none!important}.show-xs{display:block!important}}@media screen and (max-width:600px){.hide-sm{display:none!important}.show-sm{display:block!important}}@media screen and (max-width:840px){.hide-md{display:none!important}.show-md{display:block!important}}@media screen and (max-width:960px){.hide-lg{display:none!important}.show-lg{display:block!important}}@media screen and (max-width:1280px){.hide-xl{display:none!important}.show-xl{display:block!important}}.navbar{-webkit-align-items:stretch;align-items:stretch;display:flex;display:-ms-flexbox;display:-webkit-flex;-ms-flex-align:stretch;-ms-flex-pack:justify;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-justify-content:space-between;justify-content:space-between}.navbar .navbar-section{-webkit-align-items:center;align-items:center;display:flex;display:-ms-flexbox;display:-webkit-flex;-webkit-flex:1 0 0;-ms-flex:1 0 0;flex:1 0 0;-ms-flex-align:center}.navbar .navbar-section:last-child{-ms-flex-pack:end;-webkit-justify-content:flex-end;justify-content:flex-end}.navbar .navbar-center{-webkit-align-items:center;align-items:center;display:flex;display:-ms-flexbox;display:-webkit-flex;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;-ms-flex-align:center}.navbar .navbar-brand{font-size:1.6rem;font-weight:500;text-decoration:none}.menu{background:#fff;box-shadow:0 .1rem .4rem rgba(69,77,93,.3);list-style:none;margin:0;min-width:18rem;padding:1rem;-webkit-transform:translateY(.5rem);-ms-transform:translateY(.5rem);transform:translateY(.5rem);z-index:100}.menu .menu-item{margin-top:0;padding:0 .8rem;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.menu .menu-item>a{color:inherit;display:block;margin:0 -.8rem;padding:.6rem .8rem}.menu .menu-item>a:focus,.menu .menu-item>a:hover{color:#5764c6}.menu .menu-item>a.active,.menu .menu-item>a:active{background:#fbfbfe;color:#5764c6}.menu .menu-badge{float:right;padding:.6rem 0}.menu .menu-badge .btn{margin-top:-.2rem}.breadcrumb,.nav,.pagination,.tab{list-style:none;margin:.5rem 0}.breadcrumb{padding:1.2rem}.breadcrumb .breadcrumb-item{display:inline-block;margin:0}.breadcrumb .breadcrumb-item:last-child{color:#acb3c2}.breadcrumb .breadcrumb-item:not(:first-child)::before{color:#e7e9ed;content:"/";padding:0 .4rem}.nav{display:flex;display:-ms-flexbox;display:-webkit-flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.nav .nav-item a{color:#727e96;padding:.6rem .8rem}.nav .nav-item a:focus,.nav .nav-item a:hover,.nav .nav-item.active>a:focus,.nav .nav-item.active>a:hover{color:#5764c6}.nav .nav-item.active>a{font-weight:700}.nav .nav{margin-bottom:1rem;margin-left:2rem}.nav .nav a{color:#acb3c2}.divider,.divider-vert{display:block;position:relative}.divider-vert[data-content]::after,.divider[data-content]::after{background:#fff;color:#e7e9ed;content:attr(data-content);display:inline-block;font-size:1.2rem;padding:0 .8rem;-webkit-transform:translateY(-1.1rem);-ms-transform:translateY(-1.1rem);transform:translateY(-1.1rem)}.clearfix::after,.container::after,.mask:after,.version::after,h3:after{content:""}.divider{border-top:.1rem solid #f0f1f4;height:.1rem;margin:1rem 0}.clearfix::after,.container::after{clear:both;display:table}.block,.centered{display:block}.float-left{float:left!important}.float-right{float:right!important}.rel{position:relative}.abs{position:absolute}.fixed{position:fixed}.centered{float:none;margin-left:auto;margin-right:auto}.mt-10{margin-top:1rem}.mr-10{margin-right:1rem}.mb-10{margin-bottom:1rem}.ml-10{margin-left:1rem}.mt-5{margin-top:.5rem}.mr-5{margin-right:.5rem}.mb-5{margin-bottom:.5rem}.ml-5{margin-left:.5rem}.pt-10{padding-top:1rem}.pr-10{padding-right:1rem}.pb-10{padding-bottom:1rem}.pl-10{padding-left:1rem}.pt-5{padding-top:.5rem}.pr-5{padding-right:.5rem}.pb-5{padding-bottom:.5rem}.pl-5{padding-left:.5rem}.inline{display:inline}.inline-block{display:inline-block}.flex{display:flex;display:-ms-flexbox;display:-webkit-flex}.inline-flex{display:inline-flex;display:-ms-inline-flexbox;display:-webkit-inline-flex}.hide{display:none!important}.visible{visibility:visible}.invisible{visibility:hidden}.text-hide{background:0 0;border:0;color:transparent;font-size:0;line-height:0;text-shadow:none}.text-assistive{border:0;clip:rect(0,0,0,0);height:.1rem;margin:-.1rem;overflow:hidden;padding:0;position:absolute;width:.1rem}.text-left{text-align:left}.text-right{text-align:right}.text-center{text-align:center}.text-justify{text-align:justify}.text-lowercase{text-transform:lowercase}.text-uppercase{text-transform:uppercase}.text-capitalize{text-transform:capitalize}.text-normal{font-weight:400}.text-bold,li p:first-child{font-weight:700}.text-large{font-size:1.2em}.text-ellipsis{overflow:hidden;text-overflow:ellipsis}.text-clip{overflow:hidden;text-overflow:clip}.text-break{-webkit-hyphens:auto;-ms-hyphens:auto;hyphens:auto;word-break:break-word}.shadow-0{box-shadow:0 0 .2rem rgba(69,77,93,.3)}.shadow-1{box-shadow:0 .1rem .4rem rgba(69,77,93,.3)}.shadow-2{box-shadow:0 .2rem .6rem rgba(69,77,93,.3)}.shadow-3{box-shadow:0 .3rem .8rem rgba(69,77,93,.3)}.shadow-4{box-shadow:0 .4rem 1rem rgba(69,77,93,.3)}.rounded{border-radius:.2rem}.circle{border-radius:50%}.bg-gray{background:#f8f9fa;color:#667189;padding:1rem}.bg-dark,.bg-primary{color:#fff;padding:1rem}.bg-dark{background:#50596c}.bg-primary{background:#5764c6}.section-header{padding:1rem .5rem;position:fixed;top:0;width:100%;z-index:200}.section-hero{position:relative;z-index:300}.grid-header .navbar{height:4rem}.grid-header .navbar-section{padding:0}.grid-header .navbar-brand{color:#50596c}.grid-header .btn-link{color:#667189;padding-left:.6rem;padding-right:.6rem}.grid-header .btn-link:active,.grid-header .btn-link:focus,.grid-header .btn-link:hover{color:#50596c;opacity:.75}.grid-hero{margin-bottom:4rem;margin-top:10rem}.grid-hero h1{color:#50596c;font-size:3.2rem;font-weight:400}.grid-hero h2{color:#5b657a;font-size:1.8rem;font-weight:400;line-height:3rem;margin-bottom:3rem}h3,h4{line-height:1.20849}.grid-hero h2 u{border-bottom:.2rem solid currentColor;padding-bottom:.1rem}.grid-hero .card{background:0 0;border:0;color:#667189;padding:1rem}.grid-hero .card .card-title{color:#5764c6;font-size:1.8rem;margin-bottom:0}.grid-footer{color:#acb3c2;margin-bottom:1rem;margin-top:2rem}.grid-footer a{color:#727e96}.docs-content{padding-top:0}.docs-content .container{padding:1rem}.docs-content header{padding-top:6rem}.docs-content .anchor{height:0;margin-left:.3em;overflow:hidden;position:absolute;width:0}.docs-content .anchor:focus,.docs-content .anchor:hover{height:auto;width:auto}.docs-content .notes{margin:4rem 0}.docs-content .docs-block{border-radius:.2rem;padding:1rem .5rem}.docs-content .docs-dot{border-radius:50%;display:inline-block;height:1rem;padding:0;width:1rem}.docs-content .docs-table td,.docs-content .docs-table th{padding:1.5rem .5rem}.docs-content h1:hover .anchor,.docs-content h2:hover .anchor,.docs-content h3:hover .anchor,.docs-content h4:hover .anchor,.docs-content h5:hover .anchor,.docs-content h6:hover .anchor{height:auto;width:auto}.docs-content .docs-color{border-radius:.2rem;margin:.5rem 0;padding:1rem}.docs-content .docs-color .color-subtitle{font-size:1.2rem;opacity:.75}.docs-content .panel{height:75vh}.docs-content .panel .tile{margin:1.5rem 0}.docs-content .code{color:#667189}.docs-content .code .com{color:#acb3c2}.docs-content .code .tag{color:#5764c6}.docs-content .code .atn{color:#667189}.docs-content .code .atv{color:#e06870}.docs-content .empty .icon{font-size:4rem}.docs-content .form-autocomplete .menu{position:static}.docs-content .example-tile-icon{-webkit-align-content:space-around;align-content:space-around;-webkit-align-items:center;align-items:center;background:#5764c6;border-radius:.2rem;color:#fff;display:flex;display:-ms-flexbox;display:-webkit-flex;-ms-flex-align:center;-ms-flex-line-pack:distribute;font-size:2.4rem;height:4rem;width:4rem}.docs-content .example-tile-icon .icon{margin:auto}.docs-content .comparison-slider .filter-grayscale{-webkit-filter:grayscale(75%);filter:grayscale(75%)}@media screen and (min-width:601px){.section-header .navbar-section{padding:0 .5rem}.docs-sidebar{padding:0 1rem}.docs-sidebar .docs-nav{position:relative}@supports ((position:-webkit-sticky) or (position:sticky)){.docs-sidebar .docs-nav{position:sticky;position:-webkit-sticky;top:1rem;overflow-y:scroll}.docs-nav::-webkit-scrollbar{display:none}.docs-sidebar .docs-nav .nav-item a:focus{box-shadow:none}}}.docs-nav-clear{display:none}@media screen and (max-width:600px){.docs-nav-clear,.docs-sidebar{height:100%;left:0;position:fixed;top:0}.grid-hero h2{font-size:1.8rem}.grid-hero .card{padding:0}.docs-sidebar{background:#fff;overflow-y:auto;padding:0;-webkit-transform:translateX(-100%);-ms-transform:translateX(-100%);transform:translateX(-100%);transition:transform .2s ease,-webkit-transform .2s ease;transition:transform .2s ease;transition:-webkit-transform .2s ease;width:24rem;z-index:400}.docs-sidebar:target{-webkit-transform:translateX(0);-ms-transform:translateX(0);transform:translateX(0);transition:transform .2s ease,-webkit-transform .2s ease;transition:transform .2s ease;transition:-webkit-transform .2s ease}.docs-sidebar:target+.docs-nav-clear{display:block}.docs-nav-clear{background:rgba(0,0,0,.15);display:none;right:0;width:100%;z-index:300}}.hljs,pre code{background:#282c34}.hljs,h3:after,pre code{display:block}a{color:#2b93f7}h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{color:#333}table{margin:10px 0 15px}td,th{border:1px solid #ddd;padding:3px 10px}th{padding:5px 10px}h1,h2,h3,h4{font-weight:500}img{transition:width 1s}h1{font-size:40px;text-align:left;width:auto;margin:50px 0 0;color:#000}h2{margin-top:3rem;line-height:1.25;padding-bottom:.6em;font-size:32px;border-bottom:1px solid #DDD}h3{margin-top:2rem;font-size:24px;letter-spacing:.015em;font-family:"SF Pro Display","SF Pro Icons","Helvetica Neue",Helvetica,Arial,sans-serif}h3:after{height:1px;width:3em;margin:15px 0 10px;background:#2b93f7;clear:both}h4{font-size:20px;letter-spacing:.015em}h5{font-size:16px}.hljs{overflow-x:auto;padding:.5em;color:#abb2bf}.hljs-comment,.hljs-quote{color:#5c6370;font-style:italic}.hljs-doctag,.hljs-formula,.hljs-keyword{color:#c678dd}.hljs-deletion,.hljs-name,.hljs-section,.hljs-selector-tag,.hljs-subst{color:#e06c75}.hljs-literal{color:#56b6c2}.hljs-addition,.hljs-attribute,.hljs-meta-string,.hljs-regexp,.hljs-string{color:#98c379}.hljs-built_in,.hljs-class .hljs-title{color:#e6c07b}.hljs-attr,.hljs-number,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-pseudo,.hljs-template-variable,.hljs-type,.hljs-variable{color:#d19a66}.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-symbol,.hljs-title{color:#61aeee}.hljs-strong{font-weight:700}.hljs-link{text-decoration:underline}code{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;line-height:24px;padding:2px 4px;margin:0 2px;color:#e06870;background-color:#f9f9f9;border-radius:3px}pre{margin:1rem auto;position:relative}pre code{color:#abb2bf;padding:1.6rem .8rem;border-radius:.2rem;border:1px solid #313f48;line-height:1.5;font-size:14px;-ms-overflow-x:auto;word-break:break-all;white-space:pre-wrap}pre .copy-success{position:absolute;left:50%;top:25px;display:none;padding:8px 16px;background-color:#2b93f7;color:#fff;border-radius:4px;margin:-15px 0 0 -54px;z-index:100}.mask{position:relative}.mask:after{position:absolute;top:0;left:0;display:block;height:100%;width:100%;background-color:RGBA(0,0,0,.5);clear:both;transition:opacity .25s}blockquote{padding:10px;border-left:3px solid #e5e8ee;margin:0 0 20px 20px;background:#f8fafd;font-size:14px;display:block;line-height:1.5em}blockquote p,blockquote strong{color:#2996cc}blockquote ol,blockquote ul{margin:0;padding-left:17px}pre:hover .copyButton{opacity:1}button:hover{background:#1484b6}button{background:#19a5e4;border-radius:2px;color:#fff;margin:0;padding:.5rem;transition:background .25s;border:none;box-shadow:none;font-size:1rem;-webkit-appearance:none}pre .copyButton{background-color:#FFF;color:#333;font-size:.8rem;opacity:0;padding:.25rem .5rem;position:absolute;right:.5rem;top:.5rem;transition:opacity .25s}pre .copyButton:hover{background-color:#EEE;color:#000}hr{height:1px;border:none;border-top:1px dashed #06C}</style>            </head>            <body>              <section class="container grid-960">                <a href="#sidebar" class="btn btn-lg btn-link btn-action show-sm">导航</a>                <section class="columns">                  <div id="sidebar" class="docs-sidebar column col-3 col-sm-12">                    <div class="docs-nav nav"><ul>
+<li><a href="#导入sdk">导入SDK</a><ul>
+<li><a href="#导入im插件包">导入IM插件包</a></li>
+<li><a href="#导出ios工程">导出iOS工程</a></li>
+<li><a href="#导出android包">导出Android包</a></li>
+</ul>
+</li>
+<li><a href="#特别注意事项">特别注意事项</a></li>
+<li><a href="#基本接口使用时序图">基本接口使用时序图</a></li>
+<li><a href="#初始化">初始化</a><ul>
+<li><a href="#处理方法介绍">处理方法介绍</a></li>
+<li><a href="#sdk对象">SDK对象</a></li>
+<li><a href="#获取-imclient">获取 IMClient</a></li>
+<li><a href="#初始化sdk管理器">初始化SDK管理器</a></li>
+<li><a href="#设置监听">设置监听</a></li>
+</ul>
+</li>
+<li><a href="#用户管理">用户管理</a><ul>
+<li><a href="#用户登录">用户登录</a></li>
+<li><a href="#用户登出">用户登出</a></li>
+<li><a href="#用户详细信息">用户详细信息</a><ul>
+<li><a href="#设置用户详细信息">设置用户详细信息</a></li>
+<li><a href="#获取指定用户的详细信息">获取指定用户的详细信息</a></li>
+<li><a href="#获取用户登录状态">获取用户登录状态</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#频道管理">频道管理</a><ul>
+<li><a href="#加入频道">加入频道</a></li>
+<li><a href="#加入多个频道">加入多个频道</a></li>
+<li><a href="#离开频道">离开频道</a></li>
+<li><a href="#离开所有频道">离开所有频道</a></li>
+<li><a href="#切换频道">切换频道</a></li>
+<li><a href="#用户进出频道通知">用户进出频道通知</a></li>
+<li><a href="#获取房间成员数量">获取房间成员数量</a></li>
+</ul>
+</li>
+<li><a href="#消息管理">消息管理</a><ul>
+<li><a href="#接收消息">接收消息</a></li>
+<li><a href="#发送文本消息">发送文本消息</a></li>
+<li><a href="#群发文本消息">群发文本消息</a></li>
+<li><a href="#发送礼物消息">发送礼物消息</a></li>
+<li><a href="#发送自定义消息">发送自定义消息</a></li>
+<li><a href="#发送文件消息">发送文件消息</a><ul>
+<li><a href="#发送文件">发送文件</a></li>
+<li><a href="#下载文件">下载文件</a></li>
+</ul>
+</li>
+<li><a href="#语音消息管理">语音消息管理</a><ul>
+<li><a href="#设置语音识别的语言">设置语音识别的语言</a></li>
+<li><a href="#设置是否自动下载语音消息">设置是否自动下载语音消息</a></li>
+<li><a href="#发送语音消息">发送语音消息</a></li>
+<li><a href="#接收语音消息">接收语音消息</a></li>
+<li><a href="#语音播放">语音播放</a></li>
+<li><a href="#录音缓存">录音缓存</a></li>
+<li><a href="#设置下载保存目录">设置下载保存目录</a></li>
+<li><a href="#获取麦克风状态">获取麦克风状态</a></li>
+</ul>
+</li>
+<li><a href="#录音上传">录音上传</a><ul>
+<li><a href="#启动录音-1">启动录音</a></li>
+<li><a href="#停止录音并上传">停止录音并上传</a></li>
+<li><a href="#根据url下载录音文件">根据Url下载录音文件</a></li>
+</ul>
+</li>
+<li><a href="#消息屏蔽">消息屏蔽</a><ul>
+<li><a href="#屏蔽解除屏蔽用户消息">屏蔽/解除屏蔽用户消息</a></li>
+<li><a href="#解除所有已屏蔽用户">解除所有已屏蔽用户</a></li>
+<li><a href="#获取被屏蔽消息用户">获取被屏蔽消息用户</a></li>
+</ul>
+</li>
+<li><a href="#消息功能设置">消息功能设置</a><ul>
+<li><a href="#切换获取消息模式">切换获取消息模式</a></li>
+<li><a href="#手动获取消息">手动获取消息</a></li>
+<li><a href="#新消息通知">新消息通知</a></li>
+</ul>
+</li>
+<li><a href="#消息记录管理">消息记录管理</a><ul>
+<li><a href="#设置是否保存频道聊天记录">设置是否保存频道聊天记录</a></li>
+<li><a href="#拉取频道最近聊天记录">拉取频道最近聊天记录</a></li>
+<li><a href="#本地历史记录管理">本地历史记录管理</a></li>
+</ul>
+</li>
+<li><a href="#高级功能">高级功能</a><ul>
+<li><a href="#文本翻译">文本翻译</a></li>
+<li><a href="#敏感词过滤">敏感词过滤</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#游戏暂停恢复">游戏暂停恢复</a><ul>
+<li><a href="#游戏暂停通知">游戏暂停通知</a></li>
+<li><a href="#游戏恢复运行通知">游戏恢复运行通知</a></li>
+</ul>
+</li>
+<li><a href="#用户举报和禁言">用户举报和禁言</a><ul>
+<li><a href="#用户举报">用户举报</a></li>
+<li><a href="#禁言查询">禁言查询</a></li>
+</ul>
+</li>
+<li><a href="#公告管理">公告管理</a><ul>
+<li><a href="#公告功能简述">公告功能简述</a></li>
+<li><a href="#接收公告">接收公告</a></li>
+<li><a href="#撤销公告">撤销公告</a></li>
+<li><a href="#查询公告">查询公告</a></li>
+</ul>
+</li>
+<li><a href="#地理位置">地理位置</a><ul>
+<li><a href="#获取当前地理位置">获取当前地理位置</a></li>
+<li><a href="#设置地理位置更新间隔">设置地理位置更新间隔</a></li>
+<li><a href="#获取附近的用户">获取附近的用户</a></li>
+</ul>
+</li>
+<li><a href="#服务器部署地区定义">服务器部署地区定义</a></li>
+<li><a href="#错误码定义">错误码定义</a></li>
+</ul>
+</div>                  </div>                  <a href="#sidebar-close" id="sidebar-close" class="docs-nav-clear"></a>                  <div class="docs-content column col-9 col-sm-12">                    <section id="grid" class="container"><h1 id="im-sdk-for-unity3d-使用指南">IM SDK for Unity3D 使用指南<a class="anchor" aria-hidden="true" href="#im-sdk-for-unity3d-使用指南">#</a></h1><h2 id="导入sdk">导入SDK<a class="anchor" aria-hidden="true" href="#导入sdk">#</a></h2><h3 id="导入im插件包">导入IM插件包<a class="anchor" aria-hidden="true" href="#导入im插件包">#</a></h3><ul>
+<li>右键点击<code>Assets</code>-&gt;<code>Import Package</code>-&gt;<code>Custom Package…</code>-&gt;选中<code>im_unity_xxx.unitypackage</code>。<br><img src="https://www.youme.im/doc/images/im_add_sdk.jpg" alt="添加SDK"></li>
+<li>在弹出的<code>Import Unity Package</code>对话框中，勾选所有的复选框。</li>
+<li>为应用选择需要支持的CPU架构，以Android平台armeabi架构为例：<ul>
+<li>在<code>Project View</code>中<code>Assets/Plugins/Android/libs</code>目录下选择特定的CPU架构；</li>
+<li>在<code>Inspector View</code>中<code>Select platforms for plugin</code>勾选<code>Android</code>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="导出ios工程">导出iOS工程<a class="anchor" aria-hidden="true" href="#导出ios工程">#</a></h3><ul>
+<li>在<code>File</code>-&gt;<code>Build Settings…</code>的Platform列表中选择iOS；</li>
+<li>点击<code>Build Settings</code>-&gt;<code>Build</code>，选择输出iOS工程的路径，输入工程名字，导出iOS工程；</li>
+<li><p>在Xcode中打开上一步输出的iOS工程，在工程配置中<code>Build Phases</code>-&gt;<code>Link Binary With Libraries</code>下拉菜单中添加下面几个库文件：</p>
+<blockquote>
+<p><code>libc++.1.tbd</code><br><code>libsqlite3.0.tbd</code><br><code>libresolv.9.tbd</code><br><code>SystemConfiguration.framework</code><br><code>libYouMeCommon.a</code><br><code>libyim.a</code><br><code>libz.tbd</code><br><code>CoreTelephony.framework</code><br><code>iflyMSC.framework</code>（如果是要带语音转文字的sdk需要添加添加这个）<br><code>AVFoundation.framework</code><br><code>AudioToolbox.framework</code><br><code>CoreLocation.framework</code>  </p>
+</blockquote>
+</li>
+<li><p><strong>为iOS10添加录音权限</strong><br>iOS 10 使用录音权限，需要在<code>info</code>新加<code>Privacy - Microphone Usage Description</code>键，值为字符串，比如“语音聊天需要录音权限”。<br>首次录音时会向用户申请权限。配置方式如图(选择Private-Microphone Usage Description)。<br><img src="https://www.youme.im/doc/images/im_iOS_record_config.jpg" alt="iOS10录音权限配置"></p>
+</li>
+<li><p><strong>为iOS10添加地理位置权限【可选】</strong><br>若使用LBS，需要在<code>info</code>新加<code>Privacy - Location Usage Description</code>键，值为字符串，比如“查看附近的玩家需要获取地理位置权限”。首次使用定位时会向用户申请权限，配置方式如上图录音权限。</p>
+</li>
+</ul>
+<h3 id="导出android包">导出Android包<a class="anchor" aria-hidden="true" href="#导出android包">#</a></h3><p>在 AndroidManifest.xml 添加权限和网络变化监听配置，然后直接打包apk即可：</p>
+<pre><code class="lang-xml">  <span class="hljs-comment">&lt;!-- 添加到application节点内 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">application</span> <span class="hljs-attr">xxxx</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">receiver</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.youme.im.NetworkStatusReceiver"</span> <span class="hljs-attr">android:label</span>=<span class="hljs-string">"NetworkConnection"</span> &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.net.conn.CONNECTIVITY_CHANGE"</span> /&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">receiver</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">application</span>&gt;</span>
+  <span class="hljs-comment">&lt;!-- 添加到跟application平级 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.INTERNET"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.ACCESS_NETWORK_STATE"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.CHANGE_WIFI_STATE"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.CHANGE_NETWORK_STATE"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.READ_PHONE_STATE"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.RECORD_AUDIO"</span> /&gt;</span>
+   <span class="hljs-comment">&lt;!-- 获取地理位置的权限，可选 --&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.ACCESS_FINE_LOCATION"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">uses-permission</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.permission.ACCESS_COARSE_LOCATION"</span> /&gt;</span>
+</code></pre>
+<h2 id="特别注意事项">特别注意事项<a class="anchor" aria-hidden="true" href="#特别注意事项">#</a></h2><ul>
+<li>重连有可能失败，如果设置了重连监听，开始重连时能收到OnStartReconnect通知，重连结果由OnRecvReconnectResult通知给出，如果OnRecvReconnectResult通知给出的结果是重连失败，随即也会收到OnLogout的通知，此时需要判断游戏是否还在线，如果游戏还在线，就重新调用 登陆-&gt;进频道 接口</li>
+<li>初始化接口整个运行期间，只能调用一次</li>
+<li>不同设备或者不同的运行期，消息id可能重复</li>
+<li>返回值为StatusCode的接口，如果返回了非StatusCode.Success表示接口调用失败，就不会再有回调通知（前提是有回调的接口）</li>
+<li>请务必使用游密SDK提供的<code>android-support-v4.jar</code> ，这样可以兼容<code>targetSdkVersion=&quot;23&quot;</code>及其以上版本的录音授权模式</li>
+</ul>
+<h2 id="基本接口使用时序图">基本接口使用时序图<a class="anchor" aria-hidden="true" href="#基本接口使用时序图">#</a></h2><p><img src="https://youme.im/doc/images/im_sdk_flow_client_csharp.png" alt="基本接口使用时序图"></p>
+<h2 id="初始化">初始化<a class="anchor" aria-hidden="true" href="#初始化">#</a></h2><h3 id="处理方法介绍">处理方法介绍<a class="anchor" aria-hidden="true" href="#处理方法介绍">#</a></h3><p>Unity3D 版本的 IM SDK 提供的 API 全部为 csharp 接口，接口调用都不会阻塞主线程，凡是本身需要较长耗时的接口调用都会采用异步回调，所以全部接口都可以在主线程中直接使用。调用方需要实现监听类并添加到监听队列里，操作结果通过回调的方式通知到调用方。</p>
+<h3 id="sdk对象">SDK对象<a class="anchor" aria-hidden="true" href="#sdk对象">#</a></h3><blockquote>
+<p><code>IMClient</code>：SDK管理器，用来进行初始化、登录、登出等操作<br><code>IMDefine</code>：SDK声明，SDK的结构体，错误码等声明<br><code>IMMessage</code>：SDK声明，SDK的结构体<br><code>IMChannel</code>：登录登出监听器接口，负责处理登录、登出结果<br><code>IMConnectEvent</code>：登录，登出，掉线等<br><code>IMUser</code>：用户定义<br><code>ChannelEvent</code>：频道相关事件<br><code>ReconnectEvent</code>：重连事件<br><code>Config</code>：配置，如设置服务器区域，语音缓存目录等<br><code>Const</code>：错误码，结构体等声明</p>
+</blockquote>
+<h3 id="获取-imclient">获取 IMClient<a class="anchor" aria-hidden="true" href="#获取-imclient">#</a></h3><ul>
+<li><p>引入IM SDK命名空间：</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">using</span> YIMEngine;
+<span class="hljs-keyword">using</span> YouMe;
+</code></pre>
+<p>所有API操作接口都在<code>IMClient</code>对象里。这是一个单例类，可以通过<code>Instance</code>获取到它的实例。通过它就可以调用IM SDK的API接口。</p>
+</li>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> IMClient Instance;
+</code></pre>
+</li>
+<li><p>返回：</p>
+<p><code>IMClient</code>实例</p>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient imAPI = IMClient.Instance;
+</code></pre>
+</li>
+</ul>
+<h3 id="初始化sdk管理器">初始化SDK管理器<a class="anchor" aria-hidden="true" href="#初始化sdk管理器">#</a></h3><p>获得<code>IMClient</code>之后，需要调用初始化接口初始化IM SDK。</p>
+<ul>
+<li><p>接口：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">Initialize</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> appKey, <span class="hljs-keyword">string</span> secretKey, Config config</span>)</span>;
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p>  <code>appKey</code>：用户游戏产品区别于其它游戏产品的标识，可以在<a href="https://account.youme.im/login">游密官网</a>获取、查看<br>  <code>secretKey</code>：用户游戏产品的密钥，可以在<a href="https://account.youme.im/login">游密官网</a>获取、查看<br>  <code>config</code>：配置，可选择设置服务器区域，语音缓存目录，日志等级</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">var</span> errorcode = IMClient.Instance.Initialize ( <span class="hljs-string">"YoumeAppkey"</span>, <span class="hljs-string">" YoumeAppSecurity"</span>, <span class="hljs-keyword">new</span> Config(){ServerZone=ServerZone.China, CachePath=<span class="hljs-string">"path"</span>, LogLevel=LogLevel.NONE});
+<span class="hljs-keyword">if</span> (errorcode != StatusCode.Success ){
+      Log.e(<span class="hljs-string">"init fail, errorcode:"</span> + errorcode.ToString());
+}
+</code></pre>
+</li>
+<li><p>备注：</p>
+<p>Config类有如下属性(均为可选的设置)：<br><code>ServerZone</code>：服务器区域，枚举类型 ServerZone<br><code>LogLevel</code>： 日志等级，枚举类型 </p>
+<pre><code>         LogLevel.NONE=<span class="hljs-number">0</span>,     <span class="hljs-comment">//显示所有日志</span>
+         LogLevel.FATAL=<span class="hljs-number">1</span>,    <span class="hljs-comment">//致命性</span>
+         LogLevel.ERROR=<span class="hljs-number">2</span>,    <span class="hljs-comment">//错误                             </span>
+         LogLevel.WARNING=<span class="hljs-number">3</span>,  <span class="hljs-comment">//警告</span>
+         LogLevel.INFO=<span class="hljs-number">4</span>,     <span class="hljs-comment">//基本信息</span>
+         LogLevel.DEBUG=<span class="hljs-number">5</span>     <span class="hljs-comment">//调试</span>
+</code></pre><p><code>CachePath</code>：语音缓存目录</p>
+</li>
+</ul>
+<h3 id="设置监听">设置监听<a class="anchor" aria-hidden="true" href="#设置监听">#</a></h3><p>需要开发者实现的监听Action有:</p>
+<blockquote>
+<p><code>ReceiveMessageListener</code>: 接收消息监听，包括文本，语音，文件，礼物等消息<br><code>DisconnectListener</code>: 断线事件监听，一般发生在网络异常时<br><code>KickOffListener</code>: 被踢下线事件监听，在同时登录多个相同userID的情况下，先登录的帐号会被后登录的帐号踢下线<br><code>ReconnectListener</code>: 重连事件监听，网络异常断开，IM SDK会启动自动重连，返回重连结果<br><code>RecvRecordVolumeListener</code>: 录音音量值监听<br><code>GetCurrentLocationListener</code>: 获取当前地理位置监听，需由游密开启LBS服务才有此通知<br><code>RecvNoticeListener</code>: 对管理员发布的公告的监听<br><code>CancelNoticeListener</code>: 对管理员发起的取消公告的监听<br><code>RecvNewMessageListener</code>: 手动接收消息的新消息通知的监听<br><code>GetRecognizeSpeechTextListener</code>: 仅语音识别的文本内容的监听<br><code>DownloadListener</code>: 下载监听<br><code>AccusationListener</code>: 举报结果监听<br><code>OtherUserChannelEventListener</code>: 其它用户进出频道的监听，需游密后台配置才有此通知</p>
+</blockquote>
+<p>如果不设定就收不到相应事件的通知。建议初始化和设置监听在一起完成。<br><strong><em> 注：所有回调都在主线程调用 </em></strong></p>
+<ul>
+<li><p>接口原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetReceiveMessageListener</span>(<span class="hljs-params">Action&lt;IMMessage&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDisconnectListener</span>(<span class="hljs-params">Action&lt;DisconnectEvent&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetKickOffListener</span>(<span class="hljs-params">Action&lt;KickOffEvent&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetReconnectListener</span> (<span class="hljs-params">Action&lt;IMReconnectEvent&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetRecvRecordVolumeListener</span> (<span class="hljs-params">Action&lt;<span class="hljs-keyword">float</span>&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetGetCurrentLocationListener</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode, GeographyLocation&gt; listener</span>)</span>;    
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetRecvNoticeListener</span> (<span class="hljs-params">Action&lt;YIMEngine.Notice&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetCancelNoticeListener</span> (<span class="hljs-params">Action&lt;<span class="hljs-keyword">ulong</span>, <span class="hljs-keyword">string</span>&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetRecvNewMessageListener</span> (<span class="hljs-params">Action&lt;ChatType, <span class="hljs-keyword">string</span>&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetGetRecognizeSpeechTextListener</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode, <span class="hljs-keyword">ulong</span>, <span class="hljs-keyword">string</span>&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetDownloadListener</span>(<span class="hljs-params">Action&lt;YouMe.StatusCode, AudioMessage, <span class="hljs-keyword">string</span>&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetAccusationListener</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode, IMAccusationInfo&gt; listener</span>)</span>;
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetOtherUserChannelEventListener</span> (<span class="hljs-params">Action&lt;OtherUserChannelEvent&gt; listener</span>)</span>;
+</code></pre>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Test</span> : <span class="hljs-title">MonoBehaviour</span> {
+      <span class="hljs-comment">// Use this for initialization</span>
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Start</span> (<span class="hljs-params"></span>) </span>{
+          IMClient.Instance.SetReceiveMessageListener(OnReceiveMessage);                           
+          IMClient.Instance.SetDisconnectListener((disconnectEvt)=&gt;                 
+          {...}); 
+          IMClient.Instance.SetKickOffListener((kickoffEvt)=&gt;{...});   
+          IMClient.Instance.SetReconnectListener(OnReconnect);  
+          IMClient.Instance.SetRecvRecordVolumeListener(OnRecordVolume);
+          IMClient.Instance.SetGetCurrentLocationListener
+          (OnGetCurrentLocation);            
+          IMClient.Instance.SetRecvNoticeListener(OnRecvNotice);
+          IMClient.Instance.SetCancelNoticeListener(OnCancelNotice);    
+          IMClient.Instance.SetRecvNewMessageListener(OnRecvMessage);  
+          IMClient.Instance.SetGetRecognizeSpeechTextListener
+          (OnGetRecognizeSpeechText);
+          IMClient.Instance.SetDownloadListener(OnDownload);
+          IMClient.Instance.SetAccusationListener(OnAccusationResult);
+          IMClient.Instance.SetOtherUserChannelEventListener
+          (otherUserChannelEvt);
+          IMClient.Instance.Init (<span class="hljs-string">"YoumeAppkey"</span>, <span class="hljs-string">"YoumeAppSecurity"</span>,<span class="hljs-keyword">new</span> Config(){...});
+      }
+      ...
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnReceiveMessage</span> (<span class="hljs-params">IMMessage msg</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnReconnect</span> (<span class="hljs-params">IMReconnectEvent reconEvent</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnRecordVolume</span> (<span class="hljs-params"><span class="hljs-keyword">float</span> volume</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnGetCurrentLocation</span>(<span class="hljs-params">StatusCode code, GeographyLocation location</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnRecvNotice</span>(<span class="hljs-params">YIMEngine.Notice notice</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnCancelNotice</span> (<span class="hljs-params"><span class="hljs-keyword">ulong</span> noticeID, <span class="hljs-keyword">string</span> channelID</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnRecvMessage</span>(<span class="hljs-params">ChatType chatType, <span class="hljs-keyword">string</span> targetID</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnGetRecognizeSpeechText</span>(<span class="hljs-params">StatusCode code, <span class="hljs-keyword">ulong</span> requestID, <span class="hljs-keyword">string</span> text</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnDownload</span>(<span class="hljs-params">StatusCode code, AudioMessage mes, <span class="hljs-keyword">string</span> savePath</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnAccusationResult</span>(<span class="hljs-params">StatusCode code, IMAccusationInfo accusationInfo</span>)</span>{...}
+      <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnOtherUserChannelEvent</span>(<span class="hljs-params">OtherUserChannelEvent otherEvent</span>)</span>{...}
+ }
+</code></pre>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;IMReconnectEvent&gt; 参数：<br><code>IMReconnectEvent</code>：evt  重连事件</p>
+<p>IMReconnectEvent有如下属性：<br><code>EventType</code>： 事件类型，枚举类型，</p>
+<pre><code>          ReconnectEventType.START_RECONNECT=<span class="hljs-number">0</span>,  <span class="hljs-comment">//开始重连</span>
+          ReconnectEventType.END_RECONNECT=<span class="hljs-number">1</span>     <span class="hljs-comment">//重连结束</span>
+</code></pre><p><code>Result</code>：重连结果，枚举类型，</p>
+<pre><code>      ReconnectEventResult.RECONNECTRESULT_SUCCESS=<span class="hljs-number">0</span>，   <span class="hljs-comment">//重连成功</span>
+      ReconnectEventResult.RECONNECTRESULT_FAIL_AGAIN=<span class="hljs-number">1</span>，<span class="hljs-comment">//重连失败，再次重连</span>
+      ReconnectEventResult.RECONNECTRESULT_FAIL=<span class="hljs-number">2</span>        <span class="hljs-comment">//重连失败    </span>
+</code></pre></li>
+</ul>
+<h2 id="用户管理">用户管理<a class="anchor" aria-hidden="true" href="#用户管理">#</a></h2><h3 id="用户登录">用户登录<a class="anchor" aria-hidden="true" href="#用户登录">#</a></h3><p>完成以上的步骤后就可以使用IM功能了，IM用户登录IM后台服务器后即可以正常收发消息。登录为异步过程，通过回调函数返回是否成功，成功后方能进行后续操作。用户首次登录会自动注册。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Login</span>(<span class="hljs-params"><span class="hljs-keyword">string</span> userID, <span class="hljs-keyword">string</span> token, Action&lt;LoginEvent&gt; callback</span>)</span>
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>参数说明：</p>
+<p>  <code>userID</code>：用户ID或者游戏角色ID，唯一标识一个用户在应用里的身份，由调用者分配，不可为空字符串，只可由字母或数字或下划线组成，长度限制是255字节<br>  <code>token</code>：使用服务器token验证模式时使用该参数，否则使用空字符串&quot;&quot;即可，token通过restAPI获取<br>  <code>Action&lt;LoginEvent&gt;</code>：登录结果的回调通知，在此回调里判断登录是否成功</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;LoginEvent&gt; 参数：<br><code>LoginEvent</code>：evt  登录事件</p>
+<p>LoginEvent有如下属性：<br><code>Code</code>： 错误码，StatusCode类型<br><code>UserID</code>：用户ID，string类型</p>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.Login(<span class="hljs-string">"12345"</span>,<span class="hljs-string">""</span>,(evt)=&gt;{
+          <span class="hljs-keyword">if</span>(evt.Code == StatusCode.Success){
+             Debug.Log(<span class="hljs-string">"login success."</span>);
+             ...
+          }<span class="hljs-keyword">else</span>{
+             Debug.Log(<span class="hljs-string">"login fail, errorcode: "</span> + evt.Code.ToString());
+             ...
+          }
+});
+</code></pre>
+</li>
+<li><p>常见错误码处理：  </p>
+<p><code>YIMErrorcode_ParamInvalid</code>：3 参数无效，检查用户名是否拼写正确且符合参数规则，或者用户名、token是否为null<br><code>YIMErrorcode_EngineNotInit</code>：1 未初始化，初始化IM SDK<br><code>YIMErrorcode_AlreadyLogin</code>：7 已登录，无须再次登录<br><code>YIMErrorcode_StatusError</code>：5 状态错误，检查是否登出操作未完成又调用登录</p>
+</li>
+</ul>
+<h3 id="用户登出">用户登出<a class="anchor" aria-hidden="true" href="#用户登出">#</a></h3><p>如用户主动退出或需要进行用户切换，则需要调用登出操作。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Logout</span>(<span class="hljs-params">Action&lt;LogoutEvent&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数说明：</p>
+<p><code>Action&lt;LogoutEvent&gt;</code>：登出结果的回调通知，在此回调里判断登出是否成功</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;LogoutEvent&gt; 参数：<br><code>LogoutEvent</code>：evt  登出事件</p>
+<p>LogoutEvent有如下属性：<br><code>Code</code>： 错误码，StatusCode类型<br><code>UserID</code>：用户ID，string类型</p>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.Logout((evt)=&gt;{
+     Debug.Log(<span class="hljs-string">"Logout, errocode: "</span> + evt.Code.ToString());
+  });
+</code></pre>
+</li>
+<li><p>常见错误码处理：  </p>
+<p><code>YIMErrorcode_StatusError</code>：5 状态错误，检查是否未登录或者登出操作未完成又调用登出  </p>
+</li>
+</ul>
+<h3 id="用户详细信息">用户详细信息<a class="anchor" aria-hidden="true" href="#用户详细信息">#</a></h3><h4 id="设置用户详细信息">设置用户详细信息<a class="anchor" aria-hidden="true" href="#设置用户详细信息">#</a></h4><p>设置用户信息后，在游密消息管理后台才能看到消息发送者的详细信息。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">SetUserInfo</span> (<span class="hljs-params">IMUserInfo userInfo</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>userInfo</code>：用户扩展信息，请设置IMUserInfo的以下属性：  </p>
+<p><code>NickName</code>：用户昵称，string类型<br><code>ServerArea</code>：游戏服名称，string类型<br><code>ServerAreaID</code>：游戏服ID，string类型<br><code>Location</code>：游戏大区，string类型<br><code>LocationID</code>：游戏大区ID，string类型<br><code>Platform</code>：平台名称，string类型<br><code>PlatformID</code>：平台ID，string类型<br><code>Level</code>：角色等级，int类型<br><code>VipLevel</code>：vip等级，int类型<br><code>Extra</code>：其它自定义扩展信息，建义用json字符串，string类型</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h4 id="获取指定用户的详细信息">获取指定用户的详细信息<a class="anchor" aria-hidden="true" href="#获取指定用户的详细信息">#</a></h4><ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetUserInfo</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> userID, Action&lt;YouMe.StatusCode, IMUserInfo&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>userID</code>：用户的ID（登录IM时用的ID）<br><code>Action&lt;YouMe.StatusCode, IMUserInfo&gt;</code>：获取用户信息的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, IMUserInfo&gt; 参数：<br><code>StatusCode</code>：code 错误码<br><code>IMUserInfo</code>：userInfo 用户扩展信息</p>
+<p>IMUserInfo有如下属性：<br><code>NickName</code>：用户昵称，string类型<br><code>ServerArea</code>：游戏服名称，string类型<br><code>ServerAreaID</code>：游戏服ID，string类型<br><code>Location</code>：游戏大区，string类型<br><code>LocationID</code>：游戏大区ID，string类型<br><code>Platform</code>：平台名称，string类型<br><code>PlatformID</code>：平台ID，string类型<br><code>Level</code>：角色等级，int类型<br><code>VipLevel</code>：vip等级，int类型<br><code>Extra</code>：扩展信息，string类型</p>
+</li>
+</ul>
+<h4 id="获取用户登录状态">获取用户登录状态<a class="anchor" aria-hidden="true" href="#获取用户登录状态">#</a></h4><ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">QueryUserStatus</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> userID, Action&lt;YouMe.StatusCode, IMUserStatus&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>userID</code>：用户的ID（登录IM时用的ID）<br><code>Action&lt;YouMe.StatusCode, IMUserStatus&gt;</code>：查询用户状态的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, IMUserStatus&gt; 参数：<br><code>StatusCode</code>：code 错误码<br><code>IMUserStatus</code>：userStatus 用户状态，枚举类型，</p>
+<pre><code>            IMUserStatus.ONLINE=<span class="hljs-number">0</span>,  <span class="hljs-comment">//在线</span>
+            IMUserStatus.OFFLINE=<span class="hljs-number">1</span>, <span class="hljs-comment">//离线</span>
+            IMUserStatus.UNKNOWN=<span class="hljs-number">2</span>  <span class="hljs-comment">//未知</span>
+</code></pre></li>
+</ul>
+<h2 id="频道管理">频道管理<a class="anchor" aria-hidden="true" href="#频道管理">#</a></h2><h3 id="加入频道">加入频道<a class="anchor" aria-hidden="true" href="#加入频道">#</a></h3><p>通过<code>IMClient</code>的<code>JoinChannel</code>接口加入聊天频道，如果频道不存在则后台自动创建。有了这个ID就可以收发频道消息。开发者要保证频道号全局唯一，以避免用户进入错误频道。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">JoinChannel</span>(<span class="hljs-params">IMChannel channel,Action&lt;ChannelEvent&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>channel</code>：请求加入的频道，频道ID仅支持数字、字母、下划线组成的字符串，区分大小写，长度限制为255字节<br><code>Action&lt;ChannelEvent&gt;</code>：加入频道结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;ChannelEvent&gt; 参数：<br><code>ChannelEvent</code>：evt 频道事件</p>
+<p>ChannelEvent有如下属性：<br><code>Code</code>：错误码，StatusCode类型<br><code>ChannelID</code>：频道ID，string类型<br><code>EventType</code>：枚举类型，</p>
+<pre><code>         ChannelEventType.JOIN_SUCCESS=<span class="hljs-number">0</span>,      <span class="hljs-comment">//加入频道成功</span>
+         ChannelEventType.LEAVE_SUCCESS=<span class="hljs-number">1</span>,     <span class="hljs-comment">//离开频道成功</span>
+         ChannelEventType.JOIN_FAIL=<span class="hljs-number">2</span>,         <span class="hljs-comment">//加入频道失败</span>
+         ChannelEventType.LEAVE_FAIL=<span class="hljs-number">3</span>,        <span class="hljs-comment">//离开频道失败</span>
+         ChannelEventType.LEAVE_ALL_SUCCESS=<span class="hljs-number">4</span>, <span class="hljs-comment">//离开所有频道成功</span>
+         ChannelEventType.LEAVE_ALL_FAIL=<span class="hljs-number">5</span>     <span class="hljs-comment">//离开所有频道失败</span>
+</code></pre></li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.JoinChannel(<span class="hljs-keyword">new</span> IMChannel(<span class="hljs-string">"12345"</span>),(channelEvt)=&gt;{
+    <span class="hljs-keyword">if</span> (channelEvt.EventType == ChannelEventType.JOIN_SUCCESS){
+        Debug.Log(<span class="hljs-string">"JoinChannel success."</span>);
+    }<span class="hljs-keyword">else</span>{
+        Debug.Log(<span class="hljs-string">"JoinChannel fail, errorcode: "</span> +  channelEvt.code.ToString());
+    }
+});
+</code></pre>
+</li>
+<li><p>常见错误码处理：  </p>
+<p><code>YIMErrorcode_ParamInvalid</code>：3 参数无效，检查频道ID是否为null或者“”，拼写是否正确且符合参数规则<br><code>YIMErrorcode_NotLogin</code>：2 未登录，检查是否未登录或者因为网络原因已经登出  </p>
+</li>
+</ul>
+<h3 id="加入多个频道">加入多个频道<a class="anchor" aria-hidden="true" href="#加入多个频道">#</a></h3><p>通过<code>IMClient</code>的<code>JoinMultiChannel</code>接口加入多个聊天频道。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">JoinMultiChannel</span>(<span class="hljs-params">IMChannel[] channels,Action&lt;ChannelEvent&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>channels</code>：频道组<br><code>Action&lt;ChannelEvent&gt;</code>：加入频道结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;ChannelEvent&gt; 参数：<br><code>ChannelEvent</code>：evt 频道事件</p>
+<p>ChannelEvent有如下属性：<br><code>Code</code>：错误码，StatusCode类型<br><code>ChannelID</code>：频道ID，string类型<br><code>EventType</code>：枚举类型，</p>
+<pre><code>         ChannelEventType.JOIN_SUCCESS=<span class="hljs-number">0</span>,      <span class="hljs-comment">//加入频道成功</span>
+         ChannelEventType.LEAVE_SUCCESS=<span class="hljs-number">1</span>,     <span class="hljs-comment">//离开频道成功</span>
+         ChannelEventType.JOIN_FAIL=<span class="hljs-number">2</span>,         <span class="hljs-comment">//加入频道失败</span>
+         ChannelEventType.LEAVE_FAIL=<span class="hljs-number">3</span>,        <span class="hljs-comment">//离开频道失败</span>
+         ChannelEventType.LEAVE_ALL_SUCCESS=<span class="hljs-number">4</span>, <span class="hljs-comment">//离开所有频道成功</span>
+         ChannelEventType.LEAVE_ALL_FAIL=<span class="hljs-number">5</span>     <span class="hljs-comment">//离开所有频道失败</span>
+</code></pre></li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.JoinMultiChannel(channels,(channelEvt)=&gt;{
+    <span class="hljs-keyword">if</span> (channelEvt.EventType == ChannelEventType.JOIN_SUCCESS){
+        Debug.Log(<span class="hljs-string">"JoinChannel success."</span>);
+    }<span class="hljs-keyword">else</span>{
+        Debug.Log(<span class="hljs-string">"JoinChannel fail, errorcode: "</span> +  channelEvt.code.ToString());
+    }
+});
+</code></pre>
+</li>
+</ul>
+<h3 id="离开频道">离开频道<a class="anchor" aria-hidden="true" href="#离开频道">#</a></h3><p>通过<code>IMClient</code>的<code>LeaveChannel</code>接口离开频道。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LeaveChannel</span>(<span class="hljs-params">IMChannel channel,Action&lt;ChannelEvent&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>channel</code>：请求离开的频道<br><code>Action&lt;ChannelEvent&gt;</code>：离开频道结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;ChannelEvent&gt; 参数：<br><code>ChannelEvent</code>：evt 频道事件</p>
+<p>ChannelEvent有如下属性：<br><code>Code</code>：错误码，StatusCode类型<br><code>ChannelID</code>：频道ID，string类型<br><code>EventType</code>：枚举类型，</p>
+<pre><code>         ChannelEventType.JOIN_SUCCESS=<span class="hljs-number">0</span>,      <span class="hljs-comment">//加入频道成功</span>
+         ChannelEventType.LEAVE_SUCCESS=<span class="hljs-number">1</span>,     <span class="hljs-comment">//离开频道成功</span>
+         ChannelEventType.JOIN_FAIL=<span class="hljs-number">2</span>,         <span class="hljs-comment">//加入频道失败</span>
+         ChannelEventType.LEAVE_FAIL=<span class="hljs-number">3</span>,        <span class="hljs-comment">//离开频道失败</span>
+         ChannelEventType.LEAVE_ALL_SUCCESS=<span class="hljs-number">4</span>, <span class="hljs-comment">//离开所有频道成功</span>
+         ChannelEventType.LEAVE_ALL_FAIL=<span class="hljs-number">5</span>     <span class="hljs-comment">//离开所有频道失败</span>
+</code></pre></li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.LeaveChannel(<span class="hljs-keyword">new</span> IMChannel(<span class="hljs-string">"12345"</span>),(channelEvt)=&gt;{
+    <span class="hljs-keyword">if</span> (channelEvt.EventType == ChannelEventType.LEAVE_SUCCESS){
+        Debug.Log(<span class="hljs-string">"LeaveChannel success."</span>);
+    }<span class="hljs-keyword">else</span>{
+        Debug.Log(<span class="hljs-string">"LeaveChannel fail, errorcode: "</span> +   channelEvt.code.ToString());
+    }
+});
+</code></pre>
+</li>
+<li><p>常见错误码处理：  </p>
+<p><code>YIMErrorcode_ParamInvalid</code>：3 参数无效，检查频道ID是否为null或者“”<br><code>YIMErrorcode_NotLogin</code>：2 未登录，检查是否未登录或者因为网络原因已经登出<br><code>YIMErrorcode_NotJoinRoom</code>：47 未加入频道，检查是否频道ID有误 </p>
+</li>
+</ul>
+<h3 id="离开所有频道">离开所有频道<a class="anchor" aria-hidden="true" href="#离开所有频道">#</a></h3><p>通过<code>IMClient</code>的<code>LeaveAllChannels</code>接口离开所有频道。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">LeaveAllChannels</span> (<span class="hljs-params">Action&lt;ChannelEvent&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：  </p>
+<p><code>Action&lt;ChannelEvent&gt;</code>：离开所有频道结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;ChannelEvent&gt; 参数：<br><code>ChannelEvent</code>：evt 频道事件</p>
+<p>ChannelEvent有如下属性：<br><code>Code</code>：错误码，StatusCode类型<br><code>ChannelID</code>：频道ID，string类型<br><code>EventType</code>：枚举类型，</p>
+<pre><code>         ChannelEventType.JOIN_SUCCESS=<span class="hljs-number">0</span>,      <span class="hljs-comment">//加入频道成功</span>
+         ChannelEventType.LEAVE_SUCCESS=<span class="hljs-number">1</span>,     <span class="hljs-comment">//离开频道成功</span>
+         ChannelEventType.JOIN_FAIL=<span class="hljs-number">2</span>,         <span class="hljs-comment">//加入频道失败</span>
+         ChannelEventType.LEAVE_FAIL=<span class="hljs-number">3</span>,        <span class="hljs-comment">//离开频道失败</span>
+         ChannelEventType.LEAVE_ALL_SUCCESS=<span class="hljs-number">4</span>, <span class="hljs-comment">//离开所有频道成功</span>
+         ChannelEventType.LEAVE_ALL_FAIL=<span class="hljs-number">5</span>     <span class="hljs-comment">//离开所有频道失败  </span>
+</code></pre></li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.LeaveAllChannels((channelEvt)=&gt;{
+   <span class="hljs-keyword">if</span> (channelEvt.EventType == ChannelEventType.LEAVE_ALL_SUCCESS){
+        Debug.Log(<span class="hljs-string">"LeaveAllChannels success."</span>);
+    }<span class="hljs-keyword">else</span>{
+        Debug.Log(<span class="hljs-string">"LeaveAllChannels fail, errorcode: "</span> +  channelEvt.code.ToString());
+    }
+});
+</code></pre>
+</li>
+</ul>
+<h3 id="切换频道">切换频道<a class="anchor" aria-hidden="true" href="#切换频道">#</a></h3><p>通过<code>IMClient</code>的<code>SwitchToChannels</code>接口离开所有频道再重新进入频道。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SwitchToChannels</span>(<span class="hljs-params">IMChannel[] channel,Action&lt;ChannelEvent&gt; leaveCallback,Action&lt;ChannelEvent&gt; joinCallback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数： </p>
+<p><code>channel</code>：待进入频道组<br><code>Action&lt;ChannelEvent&gt; leaveCallback</code>：离开所有频道结果的回调通知<br><code>Action&lt;ChannelEvent&gt; joinCallback</code>：进入频道结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;ChannelEvent&gt; 参数：<br><code>ChannelEvent</code>：evt 频道事件</p>
+<p>ChannelEvent有如下属性：<br><code>Code</code>：错误码，StatusCode类型<br><code>ChannelID</code>：频道ID，string类型<br><code>EventType</code>：枚举类型，</p>
+<pre><code>         ChannelEventType.JOIN_SUCCESS=<span class="hljs-number">0</span>,      <span class="hljs-comment">//加入频道成功</span>
+         ChannelEventType.LEAVE_SUCCESS=<span class="hljs-number">1</span>,     <span class="hljs-comment">//离开频道成功</span>
+         ChannelEventType.JOIN_FAIL=<span class="hljs-number">2</span>,         <span class="hljs-comment">//加入频道失败</span>
+         ChannelEventType.LEAVE_FAIL=<span class="hljs-number">3</span>,        <span class="hljs-comment">//离开频道失败</span>
+         ChannelEventType.LEAVE_ALL_SUCCESS=<span class="hljs-number">4</span>, <span class="hljs-comment">//离开所有频道成功</span>
+         ChannelEventType.LEAVE_ALL_FAIL=<span class="hljs-number">5</span>     <span class="hljs-comment">//离开所有频道失败</span>
+</code></pre></li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.SwitchToChannels(channels, (leaveChannelEvt)=&gt;{
+    <span class="hljs-keyword">if</span> (leaveChannelEvt.EventType == ChannelEventType.LEAVE_ALL_SUCCESS){
+        Debug.Log(<span class="hljs-string">"LeaveAllChannels success."</span>);
+    }<span class="hljs-keyword">else</span>{
+        Debug.Log(<span class="hljs-string">"LeaveAllChannels fail, errorcode: "</span> +  leaveChannelEvt.code.ToString());
+    }
+}, 
+(joinChannelEvt)=&gt;{
+    <span class="hljs-keyword">if</span> (joinChannelEvt.EventType == ChannelEventType.JOIN_SUCCESS){
+        Debug.Log(<span class="hljs-string">"JoinChannel success."</span>);
+    }<span class="hljs-keyword">else</span>{
+        Debug.Log(<span class="hljs-string">"JoinChannel fail, errorcode: "</span> +  joinChannelEvt.code.ToString());
+    }
+});
+</code></pre>
+</li>
+</ul>
+<h3 id="用户进出频道通知">用户进出频道通知<a class="anchor" aria-hidden="true" href="#用户进出频道通知">#</a></h3><p>此功能默认不开启，需要的请联系我们开启此服务。联系我们，可以通过专属游密支持群或者技术支持的大群。</p>
+<p>小频道(小于100人)内，当其他用户进入或退出频道，设置其它用户进出频道的监听后会收到其他用户进出通知</p>
+<p><strong><em> 注意：SetOtherUserChannelEventListener宜在初始化前调用。 </em></strong></p>
+<ul>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.SetOtherUserChannelEventListener(OnOtherUserChannelEvent);
+...
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnOtherUserChannelEvent</span>(<span class="hljs-params">OtherUserChannelEvent otherEvent</span>)</span>{
+     <span class="hljs-keyword">if</span> (otherEvent.EventType == OtherUserChannelEventType.JOIN_CHANNEL){
+         Debug.Log(<span class="hljs-string">"userID="</span> + otherEvent.UserID + <span class="hljs-string">" 进入频道："</span> + otherEvent.ChannelID);
+     }<span class="hljs-keyword">else</span>{
+         Debug.Log(<span class="hljs-string">"userID="</span> + otherEvent.UserID + <span class="hljs-string">" 离开频道："</span> + otherEvent.ChannelID);
+     }
+}
+</code></pre>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;OtherUserChannelEvent&gt; 参数：<br><code>OtherUserChannelEvent</code>：evt 其它用户进出频道事件</p>
+<p>OtherUserChannelEvent有如下属性：<br><code>UserID</code>：用户ID，string类型<br><code>ChannelID</code>：频道ID，string类型<br><code>EventType</code>：枚举类型，</p>
+<pre><code>         OtherUserChannelEventType.JOIN_CHANNEL=<span class="hljs-number">0</span>, <span class="hljs-comment">//其它用户进入频道</span>
+         OtherUserChannelEventType.LEAVE_CHANNEL=<span class="hljs-number">1</span> <span class="hljs-comment">//其它用户离开频道</span>
+</code></pre></li>
+</ul>
+<h3 id="获取房间成员数量">获取房间成员数量<a class="anchor" aria-hidden="true" href="#获取房间成员数量">#</a></h3><p>获取进入频道的用户数量。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetRoomMemberCount</span> (<span class="hljs-params">IMChannel channel, Action&lt;YouMe.StatusCode, <span class="hljs-keyword">string</span>, <span class="hljs-keyword">uint</span>&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>channel</code>：频道(已成功加入此频道才能获取该频道的人数)<br><code>Action&lt;YouMe.StatusCode, string, uint&gt;</code>：获取频道成员数量结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, string, uint&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>string</code>：channelID 频道ID<br><code>uint</code>：count 人数</p>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.GetRoomMemberCount(<span class="hljs-keyword">new</span> IMChannel(<span class="hljs-string">"12345"</span>),(code, channelID, count)=&gt;{
+            Log.e(<span class="hljs-string">"获取成员数量回调，code:"</span>+code.ToString()+<span class="hljs-string">",channelID:"</span>+channelID+<span class="hljs-string">", count:"</span>+count.ToString());
+});
+</code></pre>
+</li>
+</ul>
+<h2 id="消息管理">消息管理<a class="anchor" aria-hidden="true" href="#消息管理">#</a></h2><h3 id="接收消息">接收消息<a class="anchor" aria-hidden="true" href="#接收消息">#</a></h3><p>设置接收消息的监听SetReceiveMessageListener(Action&lt;IMMessage&gt; listener)，可以接收消息。</p>
+<ul>
+<li><p>备注：</p>
+<p>Action&lt;IMMessage&gt; ，IMMessage有如下继承类：<br><code>AudioMessage</code>：语音消息<br><code>TextMessage</code>：文本消息<br><code>GiftMessage</code>：礼物消息<br><code>CustomMessage</code>：自定义消息<br><code>FileMessage</code>：文件消息  </p>
+<p>IMMessage有如下属性：<br><code>MessageType</code>：消息类型，MessageBodyType类型<br><code>SenderID</code>：私聊时为发送者ID，频道聊天时为频道ID，string类型<br><code>ReciverID</code>：接收者ID，string类型<br><code>ChatType</code>：聊天类型，枚举类型，</p>
+<pre><code>        ChatType.<span class="hljs-attribute">Unknow</span>=0,
+        ChatType.<span class="hljs-attribute">PrivateChat</span>=1,
+        ChatType.<span class="hljs-attribute">RoomChat</span>=2
+</code></pre><p><code>IsReceiveFromServer</code>：是否从服务器接收，bool类型<br><code>SendStatus</code>：发送状态，枚举类型，</p>
+<pre><code>          SendStatus.NotStartSend=<span class="hljs-number">0</span>,  <span class="hljs-comment">//未发送</span>
+          SendStatus.Sending=<span class="hljs-number">1</span>,       <span class="hljs-comment">//发送中</span>
+          SendStatus.Sended=<span class="hljs-number">2</span>,        <span class="hljs-comment">//已发送</span>
+          SendStatus.Fail=<span class="hljs-number">3</span>           <span class="hljs-comment">//发送失败</span>
+</code></pre><p><code>SendTime</code>：发送时间，uint类型<br><code>RequestID</code>：消息ID，ulong类型</p>
+</li>
+</ul>
+<ul>
+<li><p>示例：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnReceiveMessage</span> (<span class="hljs-params">IMMessage msg</span>)
+</span>{
+    <span class="hljs-keyword">if</span> (msg.MessageType == MessageBodyType.Voice){
+        <span class="hljs-keyword">var</span> audioMsg = (AudioMessage)msg;
+        Debug.Log (
+          <span class="hljs-string">"OnRecvMessage voice 文字识别结果:"</span> + audioMsg.RecongnizeText
+          + <span class="hljs-string">" send:"</span> + audioMsg.SenderID
+          + <span class="hljs-string">"recv:"</span> + audioMsg.ReciverID
+          + <span class="hljs-string">" 语音时长:"</span> + audioMsg.AudioDuration +<span class="hljs-string">"秒"</span>
+          + <span class="hljs-string">" 自定义参数:"</span> + audioMsg.ExtraParam
+        );
+        <span class="hljs-comment">// 下载语音消息，使用默认的下载路径时，路径参数可不填</span>
+        StatusCode code = audioMsg.Download ((code, audioMes)=&gt;{
+            Log.e (<span class="hljs-string">"下载语音文件回调，code:"</span> + code.ToString () + <span class="hljs-string">", savepath:"</span> + audioMes.AudioFilePath);
+        });
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (msg.MessageType == MessageBodyType.TXT){
+         <span class="hljs-keyword">var</span> textMsg = (TextMessage)msg;
+         Debug.Log (<span class="hljs-string">"OnRecvMessage txt:"</span> +
+         textMsg.Content + <span class="hljs-string">" send:"</span> + textMsg.SenderID + <span class="hljs-string">"recv:"</span> + textMsg.ReciverID);           
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (msg.MessageType == MessageBodyType.File) {
+         <span class="hljs-keyword">var</span> fileMsg = (FileMessage)msg;          
+         Debug.Log (
+          <span class="hljs-string">"OnRecvMessage file fileName:"</span> + fileMsg.FileName
+          + <span class="hljs-string">" send:"</span> + fileMsg.SenderID
+          + <span class="hljs-string">"recv:"</span> + fileMsg.ReciverID
+          + <span class="hljs-string">" fileType:"</span> + fileMsg.FileType 
+          + <span class="hljs-string">" fileSize:"</span> + fileMsg.FileSize
+        );
+        <span class="hljs-comment">//下载文件</span>
+        IMClient.Instance.DownloadFile (fileMsg.RequestID, savepath, (down_code, path) =&gt; {                
+              Log.e (<span class="hljs-string">"下载文件回调，code:"</span> + down_code.ToString () + <span class="hljs-string">", savepath:"</span> + path);                
+          });
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (msg.MessageType == MessageBodyType.Gift) {
+        <span class="hljs-keyword">var</span> giftMsg = (GiftMessage)msg;
+        Debug.Log (
+          <span class="hljs-string">"OnRecvMessage gift AnchorID:"</span> + giftMsg.AnchorID
+          + <span class="hljs-string">" count:"</span> + giftMsg.GiftCount
+          + <span class="hljs-string">" giftID:"</span> + giftMsg.GiftID
+        );         
+    }<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (msg.MessageType == MessageBodyType.CustomMesssage) {
+        <span class="hljs-keyword">var</span> customMsg = (CustomMessage)message;
+        Debug.Log (<span class="hljs-string">"OnRecvMessage customMessage:"</span> +
+         System.Convert.ToBase64String(customMsg.Content) + <span class="hljs-string">" send:"</span> + customMsg.SenderID + <span class="hljs-string">"recv:"</span> + customMsg.ReciverID);         
+    }
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="发送文本消息">发送文本消息<a class="anchor" aria-hidden="true" href="#发送文本消息">#</a></h3><p>可通过<code>IMClient</code>的<code>SendTextMessage</code>接口发送文本消息。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SendTextMessage</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> reciverID, ChatType chatType, <span class="hljs-keyword">string</span> msgContent, Action&lt;YouMe.StatusCode,TextMessage&gt; OnSendCallBack</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>reciverID</code>：接收者ID（用户ID或者频道ID）<br><code>chatType</code>：聊天类型，私聊/频道聊天<br><code>msgContent</code>：文本消息内容<br><code>Action&lt;YouMe.StatusCode,TextMessage&gt;</code>：消息发送结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,TextMessage&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>TextMessage</code>：textMsgObj 文本消息  </p>
+<p>TextMessage有如下属性：<br><code>Content</code>：文本内容，string类型</p>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.SendTextMessage(<span class="hljs-string">"123456"</span>,ChatType.PrivateChat,<span class="hljs-string">"文本消息"</span>,(code,textMsgObj)=&gt;{
+          <span class="hljs-keyword">if</span> (code == StatusCode.Success)
+          {
+              Debug.Log(<span class="hljs-string">"发送："</span> + textMsgObj.Content + <span class="hljs-string">" 成功"</span>);
+          }<span class="hljs-keyword">else</span>{
+              Debug.Log(<span class="hljs-string">"发送："</span> + textMsgObj.Content + <span class="hljs-string">" 失败"</span>);
+          }
+});
+</code></pre>
+</li>
+</ul>
+<h3 id="群发文本消息">群发文本消息<a class="anchor" aria-hidden="true" href="#群发文本消息">#</a></h3><p>用于群发文本消息的接口，<strong>每次不要超过200个用户</strong>。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">MultiSendTextMessage</span>(<span class="hljs-params">List&lt;<span class="hljs-keyword">string</span>&gt; recvLists,<span class="hljs-keyword">string</span> strText</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>recvLists</code>：接受消息的用户id列表<br><code>strText</code>：文本消息内容</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h3 id="发送礼物消息">发送礼物消息<a class="anchor" aria-hidden="true" href="#发送礼物消息">#</a></h3><p>给主播发送礼物消息的接口，支持在游密主播后台查看礼物消息信息和统计信息。客户端还是通过接收消息的监听收消息。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SendGift</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> anchorID, IMChannel channel, <span class="hljs-keyword">int</span> giftID, <span class="hljs-keyword">int</span> giftCount, ExtraGifParam extParam, Action&lt;YouMe.StatusCode,GiftMessage&gt; OnSendCallBack</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>anchorID</code>：主播id<br><code>channel</code>：主播频道id，通过<code>JoinChannel</code>进入频道的用户可以接收到消息。<br><code>giftID</code>：礼物物品id，特别的是<code>0</code>表示只是留言<br><code>giftCount</code>：礼物物品数量<br><code>extParam</code>：扩展内容，参考ExtraGifParam类熟悉说明<br><code>Action&lt;YouMe.StatusCode,GiftMessage&gt;</code>：礼物消息发送结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,GiftMessage&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>GiftMessage</code>：giftMsgObj 礼物消息  </p>
+<p>GiftMessage有如下属性：<br><code>AnchorID</code>：主播ID即礼物接收者ID，string类型<br><code>GiftID</code>：礼物ID，int类型<br><code>GiftCount</code>：礼物数量，int类型<br><code>ExtraParam</code>：额外参数，ExtraGifParam类型</p>
+<p>ExtraGifParam有如下属性：<br><code>NickName</code>：昵称，string类型<br><code>ServerArea</code>：游戏服，string类型<br><code>Location</code>：大区，string类型<br><code>Score</code>：积分，long类型<br><code>Level</code>：角色等级，int类型<br><code>VipLevel</code>：vip等级，int类型<br><code>Extra</code>：扩展信息，string类型</p>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.SendGift(<span class="hljs-string">"56789"</span>,<span class="hljs-keyword">new</span> IMChannel(<span class="hljs-string">"5678"</span>),<span class="hljs-number">2</span>,<span class="hljs-number">2</span>, <span class="hljs-literal">null</span>, (code,giftMsgObj)=&gt;{
+        Debug.Log(<span class="hljs-string">"发送礼物回调，code:"</span> + code.ToString() + <span class="hljs-string">", AnchorID:"</span> + giftMsgObj.AnchorID + <span class="hljs-string">",giftID:"</span> + giftMsgObj.GiftID + <span class="hljs-string">",giftCount:"</span> + giftMsgObj.GiftCount);
+     });
+</code></pre>
+</li>
+</ul>
+<h3 id="发送自定义消息">发送自定义消息<a class="anchor" aria-hidden="true" href="#发送自定义消息">#</a></h3><p>可通过<code>IMClient</code>的<code>SendCustomMessage</code>接口发送用户自定义消息，自定义数据是二进制数据。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp">  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SendCustomMessage</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> reciverID, ChatType chatType, <span class="hljs-keyword">byte</span>[] customMsg, Action&lt;YouMe.StatusCode,CustomMessage&gt; OnSendCallBack</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>reciverID</code>：接收者ID（用户ID或者频道ID）<br><code>chatType</code>：聊天类型<br><code>customMsg</code>：自定义消息内容<br><code>Action&lt;YouMe.StatusCode,CustomMessage&gt;</code>：消息发送结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,CustomMessage&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>CustomMessage</code>：cusMsgObj 自定义消息  </p>
+<p>CustomMessage有如下属性：<br><code>Content</code>：自定义消息内容，byte[]类型  </p>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.SendCustomMessage(<span class="hljs-string">"12345"</span>,ChatType.PrivateChat,bytemsg,(code, cusMsgObj)=&gt;{
+         Debug.Log(<span class="hljs-string">"发送自定义消息回调，code:"</span> + code.ToString()+ <span class="hljs-string">",reciverID:"</span> + cusMsgObj.ReciverID + <span class="hljs-string">",sendStatus:"</span> + cusMsgObj.SendStatus);
+     });
+</code></pre>
+</li>
+</ul>
+<h3 id="发送文件消息">发送文件消息<a class="anchor" aria-hidden="true" href="#发送文件消息">#</a></h3><h4 id="发送文件">发送文件<a class="anchor" aria-hidden="true" href="#发送文件">#</a></h4><p>可通过<code>IMClient</code>的<code>SendFile</code>接口发送文件消息。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SendFile</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> reciverID, ChatType chatType, <span class="hljs-keyword">string</span> filePath, <span class="hljs-keyword">string</span> extParam, FileType fileType, Action&lt;YouMe.StatusCode,FileMessage&gt; OnSendCallBack</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>reciverID</code>：接收者ID（用户ID或者频道ID）<br><code>chatType</code>：聊天类型<br><code>filePath</code>：要发送的文件绝对路径，包括文件名<br><code>extParam</code>：附加参数，格式自己定义，自己解析<br><code>fileType</code>：文件类型，枚举类型，</p>
+<pre><code>        FileType.FileType_Other=<span class="hljs-number">0</span> <span class="hljs-comment">//其它</span>
+        FileType.FileType_Audio=<span class="hljs-number">1</span> <span class="hljs-comment">//音频</span>
+        FileType.FileType_Image=<span class="hljs-number">2</span> <span class="hljs-comment">//图片</span>
+        FileType.FileType_Video=<span class="hljs-number">3</span> <span class="hljs-comment">//视频</span>
+</code></pre><p><code>Action&lt;YouMe.StatusCode,FileMessage&gt;</code>：消息发送结果的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,FileMessage&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>FileMessage</code>：fileMsgObj 文件消息  </p>
+<p>FileMessage有如下属性：<br><code>FileType</code>：文件类型，枚举类型，</p>
+<pre><code>        FileType.FileType_Other=<span class="hljs-number">0</span>,  <span class="hljs-comment">//其它</span>
+        FileType.FileType_Audio=<span class="hljs-number">1</span>,  <span class="hljs-comment">//音频</span>
+        FileType.FileType_Imag=<span class="hljs-number">2</span>,   <span class="hljs-comment">//图片</span>
+        FileType.FileType_Video=<span class="hljs-number">3</span>   <span class="hljs-comment">//视频</span>
+</code></pre><p><code>FileName</code>：文件名字，string类型<br><code>FileSize</code>：文件大小，int类型<br><code>ExtraParam</code>：额外参数，string类型<br><code>Extension</code>：文件扩展名，string类型</p>
+</li>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">IMClient.Instance.SendFile(<span class="hljs-string">"12345"</span>, ChatType.PrivateChat, <span class="hljs-string">""</span>, <span class="hljs-string">""</span>, FileType.FileType_Other, (code,fileMsgObj)=&gt;{      
+        Debug.Log(<span class="hljs-string">"发送文件回调, code:"</span> + code.ToString()+ <span class="hljs-string">",fileName:"</span> + fileMsgObj.FileName + <span class="hljs-string">",fileSize:"</span> + fileMsgObj.FileSize);
+});
+</code></pre>
+</li>
+</ul>
+<h4 id="下载文件">下载文件<a class="anchor" aria-hidden="true" href="#下载文件">#</a></h4><p>接收消息接口参考<a href="#收消息">收消息</a>通过<code>MessageType</code>属性分拣出文件消息<code>File</code>，然后调用函数<code>DownloadFile</code>下载文件。<br><strong>windows下，会对下载接口的保存路径参数的&#39;/&#39;转换为&#39;\&#39;；如果传入的保存路径参数不符合windows下的路径格式，下载回调中的保存路径可能和传入的保存路径不同</strong></p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DownloadFile</span> (<span class="hljs-params"><span class="hljs-keyword">ulong</span> requestID, <span class="hljs-keyword">string</span> targetFilePath, Action&lt;YouMe.StatusCode,IMMessage,<span class="hljs-keyword">string</span>&gt; downloadCallback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>requestID</code>：消息ID<br><code>targetFilePath</code>：文件保存路径（带文件名的全路径），如果目录不存在，SDK会自动创建，必须保证该路径有可写权限<br><code>downloadCallback</code>：文件下载回调</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,IMMessage,string&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>IMMessage</code>：messageObj 消息体，详见<a href="#收消息">收消息</a><br><code>string</code>：savePath 文件保存路径 </p>
+</li>
+</ul>
+<h3 id="语音消息管理">语音消息管理<a class="anchor" aria-hidden="true" href="#语音消息管理">#</a></h3><p>语音消息聊天简要流程：</p>
+<ul>
+<li>调用IM的语音发送接口就开始录音；</li>
+<li>调用结束录音接口后自动停止录音并发送。</li>
+</ul>
+<p>接收方接收语音消息通知后，调用方控制是否下载，调用下载接口就可以获取录音内容。然后开发者调用游戏引擎的播放接口播放wav音频文件。</p>
+<h4 id="设置语音识别的语言">设置语音识别的语言<a class="anchor" aria-hidden="true" href="#设置语音识别的语言">#</a></h4><p><code>StartRecordAudio</code>提供语音识别功能，将语音识别为文字，默认输入语音为普通话，识别文字为简体中文，可通过<code>SetSpeechRecognizeLanguage</code>函数设置语言；若需要识别为繁体中文，需要联系我们配置此服务。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">SetSpeechRecognizeLanguage</span> (<span class="hljs-params">SpeechLanguage language</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>language</code>：语言，枚举类型，</p>
+<pre><code>        SpeechLanguage.SPEECHLANG_MANDARIN=<span class="hljs-number">0</span>, <span class="hljs-comment">//普通话(Android IOS Windows)</span>
+        SpeechLanguage.SPEECHLANG_YUEYU=<span class="hljs-number">1</span>,    <span class="hljs-comment">//粤语(Android IOS Windows) </span>
+        SpeechLanguage.SPEECHLANG_SICHUAN=<span class="hljs-number">2</span>,  <span class="hljs-comment">//四川话(Android IOS)</span>
+        SpeechLanguage.SPEECHLANG_HENAN=<span class="hljs-number">3</span>,    <span class="hljs-comment">//河南话(IOS)</span>
+        SpeechLanguage.SPEECHLANG_ENGLISH=<span class="hljs-number">4</span>   <span class="hljs-comment">//英语(Android IOS Windows)</span>
+        SpeechLanguage.SPEECHLANG_TRADITIONAL=<span class="hljs-number">5</span> <span class="hljs-comment">//繁体中文</span>
+</code></pre></li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h4 id="设置是否自动下载语音消息">设置是否自动下载语音消息<a class="anchor" aria-hidden="true" href="#设置是否自动下载语音消息">#</a></h4><p>SetDownloadAudioMessageSwitch()在初始化之后，启动语音之前调用;若设置了自动下载语音消息，不需再调用AudioMessage.Download()或者DownloadFile()接口，收到语音消息时会自动下载，若调用SetDownloadListener(Action&lt;YouMe.StatusCode, AudioMessage, string&gt; listener)接口设置过下载的监听，下载完成会收到下载完成的通知。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">SetAutoDownloadAudioMessage</span> (<span class="hljs-params"><span class="hljs-keyword">bool</span> download</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>download</code>：true-自动下载语音消息，false-不自动下载语音消息(默认) </p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,AudioMessage&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>AudioMessage</code>：audioMsgObj 语音消息  </p>
+<p>AudioMessage有如下属性：<br><code>RecongnizeText</code>：语音识别的文本，string类型<br><code>AudioFilePath</code>：语音文件路径，string类型<br><code>IsRecognizeText</code>：是否开启了语音文字识别，bool类型<br><code>MessageDownloadStatus</code>：语音消息下载状态，枚举类型，</p>
+<pre><code>                     MessageDownloadStatus.NOTDOWNLOAD=<span class="hljs-number">0</span>,  <span class="hljs-comment">//未下载</span>
+                     MessageDownloadStatus.DOWNLOADING=<span class="hljs-number">1</span>,  <span class="hljs-comment">//下载中</span>
+                     MessageDownloadStatus.DOWNLOADED=<span class="hljs-number">2</span>,   <span class="hljs-comment">//已下载</span>
+                     MessageDownloadStatus.DOWNLOAD_FAIL=<span class="hljs-number">3</span> <span class="hljs-comment">//下载失败</span>
+</code></pre><p><code>AudioDuration</code>：语音时长，int类型<br><code>ExtraParam</code>：附加信息，string类型</p>
+</li>
+</ul>
+<h4 id="发送语音消息">发送语音消息<a class="anchor" aria-hidden="true" href="#发送语音消息">#</a></h4><h5 id="启动录音">启动录音<a class="anchor" aria-hidden="true" href="#启动录音">#</a></h5><p>调用<code>IMClient</code>的<code>StartRecordAudio</code>语音发送接口，调用<code>StopRecordAndSendAudio</code>接口后自动停止录音并发送，或者调用<code>CancleRecordAudio</code>取消本次消息发送。注意：语音消息最大的时长是1分钟（超过1分钟就自动发出去）。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">StartRecordAudio</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> reciverID, ChatType chatType, <span class="hljs-keyword">string</span> extraMsg, <span class="hljs-keyword">bool</span> recognizeText, <span class="hljs-keyword">bool</span> IsOpenOnlyRecognizeText = <span class="hljs-literal">false</span></span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>reciverID</code>：接收者ID，私聊传用户id，频道聊天传频道id<br><code>chatType</code>：聊天类型<br><code>extraMsg</code>：附带自定义文本消息内容，可为空<br><code>recognizeText</code>：是否开启语音转文字识别功能<br><code>IsOpenOnlyRecognizeText</code>：可选参数，仅需要语音识别的文本内容，不发送语音；默认不开启，未开启语音转文字功能忽略此参数, 若此值为真，调用StopAudioMessage成功后会收到OnGetRecognizeSpeechText回调   <strong> 注意：需设置获取语音识别文本监听才能收到语音识别后的文本内容  </strong></p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h5 id="结束录音并发送">结束录音并发送<a class="anchor" aria-hidden="true" href="#结束录音并发送">#</a></h5><ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">StopRecordAndSendAudio</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode,AudioMessage&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>Action&lt;YouMe.StatusCode,AudioMessage&gt;</code>：语音消息发送回调通知，会通知多次，通过AudioMessage的SendStatus属性可以判断是哪个状态的回调</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,AudioMessage&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>AudioMessage</code>：audioMsgObj 语音消息  </p>
+<p>AudioMessage有如下属性：<br><code>RecongnizeText</code>：语音识别的文本，string类型<br><code>AudioFilePath</code>：语音文件路径，string类型<br><code>IsRecognizeText</code>：是否开启了语音文字识别，bool类型<br><code>MessageDownloadStatus</code>：语音消息下载状态，枚举类型，</p>
+<pre><code>                     MessageDownloadStatus.NOTDOWNLOAD=<span class="hljs-number">0</span>,  <span class="hljs-comment">//未下载</span>
+                     MessageDownloadStatus.DOWNLOADING=<span class="hljs-number">1</span>,  <span class="hljs-comment">//下载中</span>
+                     MessageDownloadStatus.DOWNLOADED=<span class="hljs-number">2</span>,   <span class="hljs-comment">//已下载</span>
+                     MessageDownloadStatus.DOWNLOAD_FAIL=<span class="hljs-number">3</span> <span class="hljs-comment">//下载失败</span>
+</code></pre><p><code>AudioDuration</code>：语音时长，int类型<br><code>ExtraParam</code>：附加信息，string类型</p>
+</li>
+</ul>
+<h5 id="取消本次录音">取消本次录音<a class="anchor" aria-hidden="true" href="#取消本次录音">#</a></h5><ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">CancleRecordAudio</span>(<span class="hljs-params"></span>)</span>
+</code></pre>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h4 id="接收语音消息">接收语音消息<a class="anchor" aria-hidden="true" href="#接收语音消息">#</a></h4><p>可以使用AudioMessage.Download()下载接口下载语音消息，用法参考<a href="#收消息">消息收发</a>。<br><strong>windows下，会对下载接口的保存路径参数的&#39;/&#39;转换为&#39;\&#39;；如果传入的保存路径参数不符合windows下的路径格式，下载回调中的保存路径可能和传入的保存路径不同</strong></p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Download</span> (<span class="hljs-params">Action&lt;StatusCode,AudioMessage&gt; downloadCallback, <span class="hljs-keyword">string</span> targetPath = <span class="hljs-string">""</span></span>)</span>
+</code></pre>
+</li>
+<li><p>参数： </p>
+<p><code>downloadCallback</code>：语音消息下载回调<br><code>targetPath</code>：可选参数，语音消息下载的存放路径，默认值为“”；若未设置下载目录且参数使用默认值，下载路径就是默认的下载路径；若设置了下载目录且参数使用默认值，下载路径为设置的下载目录；若参数不是默认值，下载路径就是参数指定的路径</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,AudioMessage&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>AudioMessage</code>：audioMes 语音消息</p>
+</li>
+</ul>
+<h4 id="语音播放">语音播放<a class="anchor" aria-hidden="true" href="#语音播放">#</a></h4><h5 id="播放语音">播放语音<a class="anchor" aria-hidden="true" href="#播放语音">#</a></h5><p>可以使用AudioMessage.PlayAudio()播放接口进行播放，目前只支持WAV格式，用法参考<a href="#收消息">消息收发</a>。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PlayAudio</span>(<span class="hljs-params">Action&lt;StatusCode, <span class="hljs-keyword">string</span>&gt; playCallback, <span class="hljs-keyword">float</span> volume = <span class="hljs-number">1.0</span>f</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>Action&lt;StatusCode, string&gt; playCallback</code>：语音播放回调<br><code>volume</code>：可选参数，语音播放的音量值，范围：0.0-1.0 默认是1.0f</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,string&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码，StatusCode.Success或者StatusCode.PTT_IsPlaying，都是操作成功，StatusCode.PTT_IsPlaying 表示覆盖了当前正在播放的音频文件。<br><code>string</code>：filePath 播放的音频文件路径    </p>
+</li>
+</ul>
+<h5 id="停止语音播放">停止语音播放<a class="anchor" aria-hidden="true" href="#停止语音播放">#</a></h5><p>可以使用AudioMessage.StopPlay()停止播放当前语音，用法参考<a href="#收消息">消息收发</a>。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">StopPlay</span> (<span class="hljs-params"></span>)</span>
+</code></pre>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h4 id="录音缓存">录音缓存<a class="anchor" aria-hidden="true" href="#录音缓存">#</a></h4><h5 id="获取当前设置的录音缓存目录">获取当前设置的录音缓存目录<a class="anchor" aria-hidden="true" href="#获取当前设置的录音缓存目录">#</a></h5><p>获取录音缓存目录。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">string</span> <span class="hljs-title">GetAudioCachePath</span> (<span class="hljs-params"></span>)</span>
+</code></pre>
+</li>
+<li><p>返回：</p>
+<p>返回初始化时设置的录音缓存目录的完整路径。</p>
+</li>
+</ul>
+<h5 id="清理录音缓存目录">清理录音缓存目录<a class="anchor" aria-hidden="true" href="#清理录音缓存目录">#</a></h5><p>清空当前设置的录音缓存目录(注意清空语音缓存目录后历史记录中会无法读取到音频文件，调用清理历史记录接口也会自动删除对应的音频缓存文件)。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">ClearAudioCachePath</span> (<span class="hljs-params"></span>)</span>
+</code></pre>
+</li>
+<li><p>返回：</p>
+<p><code>true</code>：表示清理成功，<code>false</code>：表示清理操作失败。</p>
+</li>
+</ul>
+<h4 id="设置下载保存目录">设置下载保存目录<a class="anchor" aria-hidden="true" href="#设置下载保存目录">#</a></h4><p>下载保存目录是的默认下载目录，对下载语音消息和文件均适用；设置下载保存目录在初始化之后，启动语音之前调用，若设置了下载保存目录，调用DownloadFile()时其中的savePath参数可以为空字符串。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">SetDownloadDir</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> path</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>path</code>：下载目录路径。  </p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h4 id="获取麦克风状态">获取麦克风状态<a class="anchor" aria-hidden="true" href="#获取麦克风状态">#</a></h4><ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetMicrophoneStatus</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode,IMAudioDeviceStatus&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>Action&lt;YouMe.StatusCode,IMAudioDeviceStatus&gt;</code>：获取麦克风状态的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,IMAudioDeviceStatus&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>IMAudioDeviceStatus</code>：status 麦克风设备状态，枚举类型，</p>
+<pre><code>                   IMAudioDeviceStatus.AVAILABLE=<span class="hljs-number">0</span>,    <span class="hljs-comment">//可用</span>
+                   IMAudioDeviceStatus.NO_AUTHORITY=<span class="hljs-number">1</span>, <span class="hljs-comment">//无权限</span>
+                   IMAudioDeviceStatus.MUTE=<span class="hljs-number">2</span>,         <span class="hljs-comment">//静音</span>
+                   IMAudioDeviceStatus.UNAVAILABLE=<span class="hljs-number">3</span>,  <span class="hljs-comment">//不可用</span>
+                   IMAudioDeviceStatus.UNKNOWN=<span class="hljs-number">4</span>       <span class="hljs-comment">//未知，一般是获取麦克风状态失败</span>
+</code></pre></li>
+</ul>
+<h3 id="录音上传">录音上传<a class="anchor" aria-hidden="true" href="#录音上传">#</a></h3><h4 id="启动录音">启动录音<a class="anchor" aria-hidden="true" href="#启动录音">#</a></h4><ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">StartAudioSpeech</span> (<span class="hljs-params"><span class="hljs-keyword">bool</span> translate</span>)</span>
+</code></pre>
+</li>
+<li><p>参数： </p>
+<p><code>translate</code>：是否进行语音转文字识别</p>
+</li>
+<li><p>返回：</p>
+<p><code>true</code>：表示启动录音成功，<code>false</code>：表示启动录音失败。</p>
+</li>
+</ul>
+<h4 id="停止录音并上传">停止录音并上传<a class="anchor" aria-hidden="true" href="#停止录音并上传">#</a></h4><p>该接口自动上传并只返回音频文件的下载链接，不会自动发送。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">StopAudioSpeech</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode, SpeechInfo&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数： </p>
+<p><code>Action&lt;YouMe.StatusCode, SpeechInfo&gt;</code>：语音上传回调</p>
+</li>
+<li><p>相关接口：</p>
+<pre><code class="lang-csharp"><span class="hljs-comment">//取消本次录音</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">CancleRecordAudio</span>(<span class="hljs-params"></span>)</span>
+</code></pre>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, SpeechInfo&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>SpeechInfo</code>：speechInfo 录音信息</p>
+<p>SpeechInfo有如下属性：<br><code>RequestID</code>：消息ID，ulong类型<br><code>DownloadURL</code>：下载链接Url，string类型<br><code>Duration</code>：录音时长，int类型<br><code>FileSize</code>：文件大小，int类型<br><code>LocalPath</code>：录音文件的本地路径，string类型<br><code>Text</code>：录音识别的文本，可能为空null 或者 “”，string类型<br><code>HasUpload</code>：是否已上传，bool类型</p>
+</li>
+</ul>
+<h4 id="根据url下载录音文件">根据Url下载录音文件<a class="anchor" aria-hidden="true" href="#根据url下载录音文件">#</a></h4><ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">DownloadFileByUrl</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> downloadUrl, <span class="hljs-keyword">string</span> savePath, Action&lt;YouMe.StatusCode, <span class="hljs-keyword">string</span>&gt; downloadCallback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>downloadUrl</code>：语音文件的url下载地址<br><code>savePath</code>：语音文件的本地存放地址,带文件名的全路径<br><code>Action&lt;YouMe.StatusCode, string&gt;</code>：文件下载回调</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, string&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>string</code>：savePath 本地保存路径 </p>
+</li>
+</ul>
+<h3 id="消息屏蔽">消息屏蔽<a class="anchor" aria-hidden="true" href="#消息屏蔽">#</a></h3><h4 id="屏蔽解除屏蔽用户消息">屏蔽/解除屏蔽用户消息<a class="anchor" aria-hidden="true" href="#屏蔽解除屏蔽用户消息">#</a></h4><p>若屏蔽用户的消息，此屏蔽用户发送的私聊/频道消息都接收不到。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">BlockUser</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> userID, <span class="hljs-keyword">bool</span> block, Action&lt;YouMe.StatusCode, <span class="hljs-keyword">bool</span>&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>userID</code>：用户ID<br><code>block</code>：true-屏蔽 false-解除屏蔽<br><code>Action&lt;YouMe.StatusCode, bool&gt;</code>：屏蔽用户的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, bool&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>bool</code>：block 是否被屏蔽</p>
+</li>
+</ul>
+<h4 id="解除所有已屏蔽用户">解除所有已屏蔽用户<a class="anchor" aria-hidden="true" href="#解除所有已屏蔽用户">#</a></h4><ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">UnBlockAllUser</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>Action&lt;YouMe.StatusCode&gt;</code>：解除所有屏蔽用户的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码   </p>
+</li>
+</ul>
+<h4 id="获取被屏蔽消息用户">获取被屏蔽消息用户<a class="anchor" aria-hidden="true" href="#获取被屏蔽消息用户">#</a></h4><p>获取被自己屏蔽接收消息的所有用户。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetBlockUsers</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode, List&lt;<span class="hljs-keyword">string</span>&gt; &gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>Action&lt;YouMe.StatusCode, List&lt;string&gt;&gt;</code>：获取屏蔽用户的回调通知  </p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, List&lt;string&gt;&gt; 参数：<br><code>YouMe.StatusCode</code>：code 错误码<br><code>List&lt;string&gt;</code>：userList 屏蔽的用户ID列表</p>
+</li>
+</ul>
+<h3 id="消息功能设置">消息功能设置<a class="anchor" aria-hidden="true" href="#消息功能设置">#</a></h3><h4 id="切换获取消息模式">切换获取消息模式<a class="anchor" aria-hidden="true" href="#切换获取消息模式">#</a></h4><p>在自动接收消息和手动接收消息间切换，默认是自动接收消息。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">SetAutoRecvMsg</span> (<span class="hljs-params">List&lt;<span class="hljs-keyword">string</span>&gt; targets, <span class="hljs-keyword">bool</span> bAutoRecv</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>targets</code>：频道ID，可以指定多个<br><code>bAutoRecv</code>：<code>true</code>为自动接收消息，<code>false</code>为手动接收消息，默认为<code>true</code>。</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h4 id="手动获取消息">手动获取消息<a class="anchor" aria-hidden="true" href="#手动获取消息">#</a></h4><p>在手动接收消息模式，调用SetReciveMessageListener(Action&lt;IMMessage&gt; listener)接口设置监听才能监听到接收消息的通知。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">GetNewMessage</span> (<span class="hljs-params">List&lt;<span class="hljs-keyword">string</span>&gt; targets</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>targets</code>：频道ID，可以指定多个</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h4 id="新消息通知">新消息通知<a class="anchor" aria-hidden="true" href="#新消息通知">#</a></h4><p>在手动接收消息模式，会通知新消息大概数量，调用SetRecvNewMessageListener (Action&lt;ChatType, string&gt; listener)接口设置监听才能收到新消息的通知。</p>
+<ul>
+<li><p>示例：</p>
+<pre><code class="lang-csharp">...
+IMClient.Instance.SetRecvNewMessageListener
+(OnRecvNewMessage);
+...
+OnRecvNewMessage(YIMEngine.ChatType chatType, <span class="hljs-keyword">string</span> targetID){...}
+</code></pre>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;ChatType, string&gt; 参数：<br><code>ChatType</code>：chatType 聊天类型<br><code>string</code>：targetID 如果是频道聊天，该值为频道ID；私聊该值为空      </p>
+</li>
+</ul>
+<h3 id="消息记录管理">消息记录管理<a class="anchor" aria-hidden="true" href="#消息记录管理">#</a></h3><h4 id="设置是否保存频道聊天记录">设置是否保存频道聊天记录<a class="anchor" aria-hidden="true" href="#设置是否保存频道聊天记录">#</a></h4><p>设置是否在本地保存频道聊天记录，默认不保存。<code>私聊历史记录默认保存</code>。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetRoomHistoryMessageSwitch</span> (<span class="hljs-params">List&lt;<span class="hljs-keyword">string</span>&gt; channelIDs, <span class="hljs-keyword">bool</span> save</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>channelIDs</code>：频道id，指定要保存本地历史记录的频道ID，可以一次设置多个，对应 <code>JoinChannel</code> 指定的ID。<br><code>save</code>：<code>true</code>表示保存聊天记录，<code>false</code>表示不保存聊天记录，默认为<code>false</code>。</p>
+</li>
+</ul>
+<h4 id="拉取频道最近聊天记录">拉取频道最近聊天记录<a class="anchor" aria-hidden="true" href="#拉取频道最近聊天记录">#</a></h4><p>从服务器拉取频道最近的聊天历史记录。<br>这个功能默认不开启，需要的请联系我们修改服务器配置。联系我们，可以通过专属游密支持群或者技术支持的大群。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">QueryRoomHistoryMessageFromServer</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> channelID, <span class="hljs-keyword">int</span> count, <span class="hljs-keyword">int</span> direction,Action&lt;YouMe.StatusCode, <span class="hljs-keyword">string</span>, <span class="hljs-keyword">uint</span>, List&lt;IMMessage&gt;&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>channelID</code>：频道id<br><code>count</code>：消息数量（最多200条）<br><code>direction</code>：历史消息排序方向 0：按时间戳升序    1：按时间戳逆序<br><code>Action&lt;YouMe.StatusCode, string, uint, List&lt;IMMessage&gt;&gt;</code>：查询房间历史消息的回调通知</p>
+</li>
+<li><p>备注：<br>Action&lt;YouMe.StatusCode, string, uint, List&lt;IMMessage&gt;&gt;参数：<br><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a><br><code>string</code>：channelID 频道ID<br><code>uint</code>：remain 剩余数量<br><code>List&lt;IMMessage&gt;</code>：imMsgList 消息列表</p>
+</li>
+</ul>
+<h4 id="本地历史记录管理">本地历史记录管理<a class="anchor" aria-hidden="true" href="#本地历史记录管理">#</a></h4><h5 id="查询本地聊天历史记录">查询本地聊天历史记录<a class="anchor" aria-hidden="true" href="#查询本地聊天历史记录">#</a></h5><ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">QueryHistoryMessage</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> targetID, ChatType chatType, <span class="hljs-keyword">ulong</span> startMessageID, <span class="hljs-keyword">int</span> count, <span class="hljs-keyword">int</span> direction, Action&lt;YouMe.StatusCode,IMHistoryMessageInfo&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>targetID</code>：用户ID或者频道ID<br><code>chatType</code>：表示查询私聊或者频道聊天的历史记录<br><code>startMessageID</code>：起始历史记录消息id（与requestid不同），为<code>0</code>表示首次查询，将倒序获取<code>count</code>条记录<br><code>count</code>：最多获取多少条<br><code>direction</code>：历史记录查询方向，<code>startMessageID=0</code>时,direction使用默认值0； <code>startMessageID&gt;0</code>时，<code>0</code>表示查询比<code>startMessageID</code>小的消息，<code>1</code>表示查询比<code>startMessageID</code>大的消息<br><code>Action&lt;YouMe.StatusCode,IMHistoryMessageInfo&gt;</code>: 查询历史消息的回调通知</p>
+</li>
+<li><p>相关函数：<br>对于房间本地记录，需要先设置自动保存房间消息。<code>SetRoomHistoryMessageSwitch</code></p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode,IMHistoryMessageInfo&gt;  参数：<br><code>StatusCode</code>：code 错误码<br><code>IMHistoryMessageInfo</code>：historyInfo 历史消息</p>
+<p>IMHistoryMessageInfo有如下属性：<br><code>TargetID</code>：用户ID，string类型<br><code>Remain</code>：剩余历史消息条数，int类型<br><code>HistoryMesList</code>：消息列表，List&lt;HistoryMsg&gt;类型</p>
+<p>HistoryMsg有如下属性：<br><code>MessageType</code>：消息内容类型，枚举类型 </p>
+<pre><code>          MessageBodyType.Unknow=<span class="hljs-number">0</span>，        <span class="hljs-comment">//未知</span>
+          MessageBodyType.TXT=<span class="hljs-number">1</span>，           <span class="hljs-comment">//文本</span>
+          MessageBodyType.CustomMesssage=<span class="hljs-number">2</span>，<span class="hljs-comment">//自定义</span>
+          MessageBodyType.Emoji=<span class="hljs-number">3</span>，         <span class="hljs-comment">//表情</span>
+          MessageBodyType.Image=<span class="hljs-number">4</span>，         <span class="hljs-comment">//图片</span>
+          MessageBodyType.Voice=<span class="hljs-number">5</span>，         <span class="hljs-comment">//语音</span>
+          MessageBodyType.Video=<span class="hljs-number">6</span>，         <span class="hljs-comment">//视频</span>
+          MessageBodyType.File=<span class="hljs-number">7</span>，          <span class="hljs-comment">//文件</span>
+          MessageBodyType.Gift=<span class="hljs-number">8</span>            <span class="hljs-comment">//礼物</span>
+</code></pre><p><code>ChatType</code>：聊天类型，私聊/频道聊天，目前历史记录都是私聊，枚举类型</p>
+<pre><code>          ChatType.Unknow=<span class="hljs-number">0</span>,      <span class="hljs-comment">//未知</span>
+          ChatType.PrivateChat=<span class="hljs-number">1</span>, <span class="hljs-comment">//私聊</span>
+          ChatType.RoomChat=<span class="hljs-number">3</span>     <span class="hljs-comment">//频道聊天</span>
+</code></pre><p><code>CreateTime</code>：消息收发时间，int类型<br><code>LocalPath</code>：语音消息的wav文件本地路径，string类型<br><code>Text</code>：文本消息内容 或者 语音消息的文本识别内容，string类型<br><code>MessageID</code>：历史记录消息ID，ulong类型<br><code>SenderID</code>：消息发送者ID，string类型<br><code>ReceiveID</code>：消息接收者ID，string类型<br><code>Param</code>：如果是语音消息，该值表示语音消息的自定义附加参数，string类型<br><code>Duration</code>：如果是语音消息，该值表示语音消息时长，int类型<br><code>IsRead</code>：是否已读，bool类型<br><code>CustomMsg</code>：如果是自定义消息，该值为自定义消息内容，byte[]类型</p>
+</li>
+</ul>
+<h5 id="根据时间清理本地聊天历史记录">根据时间清理本地聊天历史记录<a class="anchor" aria-hidden="true" href="#根据时间清理本地聊天历史记录">#</a></h5><p>建议定期清理本地历史记录。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">DeleteHistoryMessage</span> (<span class="hljs-params">ChatType chatType, <span class="hljs-keyword">ulong</span> time</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>chatType</code>：指定是清理频道消息还是私聊消息<br><code>time</code>：Unix timestamp,精确到秒，表示删除这个时间点之前的所有历史记录</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h5 id="根据消息id清理本地聊天历史记录">根据消息ID清理本地聊天历史记录<a class="anchor" aria-hidden="true" href="#根据消息id清理本地聊天历史记录">#</a></h5><p>可以根据ID删除对应的本地私聊历史记录。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">DeleteHistoryMessageByID</span> (<span class="hljs-params"><span class="hljs-keyword">ulong</span> messageID</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>messageID</code>：将删除指定消息id的历史记录，对应 <code>YIMEngine.HistoryMsg</code> 的 <code>MessageID</code> 属性值。</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a> </p>
+</li>
+</ul>
+<h5 id="根据用户id清理本地私聊历史记录">根据用户ID清理本地私聊历史记录<a class="anchor" aria-hidden="true" href="#根据用户id清理本地私聊历史记录">#</a></h5><p>可以根据用户ID删除对应的本地私聊历史记录,保留消息ID白名单中的消息记录,白名单列表为空时删除与该用户ID间的所有本地私聊记录。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">DeleteSpecifiedHistoryMessage</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> targetID, ChatType chatType, <span class="hljs-keyword">ulong</span>[] excludeMesList</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>targetID</code>：指定的用户ID。<br><code>chatType</code>：指定清理私聊消息。<br><code>excludeMesList</code>：与该用户ID的私聊消息ID白名单，即保留的消息ID列表。</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a> </p>
+</li>
+</ul>
+<h5 id="根据用户或房间id清理本地聊天历史记录">根据用户或房间ID清理本地聊天历史记录<a class="anchor" aria-hidden="true" href="#根据用户或房间id清理本地聊天历史记录">#</a></h5><p>可以根据用户ID或者房间ID删除以指定的起始消息ID开始的n条本地私聊历史记录，起始消息ID和消息数量使用默认值时则删除所有消息。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">DeleteHistoryMessageByTarget</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> targetID, ChatType chatType, <span class="hljs-keyword">ulong</span> startMessageID, <span class="hljs-keyword">uint</span> count</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>targetID</code>：用户ID或者房间ID<br><code>chatType</code>：聊天类型<br><code>startMessageID</code>：起始消息ID(默认值0表示最近的一条消息)<br><code>count</code>：消息数量(默认值0表示删除所有消息)</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a> </p>
+</li>
+</ul>
+<h5 id="获取最近私聊联系人列表">获取最近私聊联系人列表<a class="anchor" aria-hidden="true" href="#获取最近私聊联系人列表">#</a></h5><p>该接口是根据本地历史消息记录生成的最近联系人列表，按最后聊天时间倒序排列。该列表会受清理历史记录消息的接口影响。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetHistoryContact</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode, List&lt;ContactsSessionInfo&gt;&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>Action&lt;YouMe.StatusCode, List&lt;ContactsSessionInfo&gt;&gt;</code>：获取联系人列表的回调通知</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, List&lt;ContactsSessionInfo&gt;&gt;  参数：<br><code>StatusCode</code>：code 错误码<br><code>List&lt;ContactsSessionInfo&gt;</code>：contactList 联系人信息列表</p>
+<p>ContactsSessionInfo有如下属性：<br><code>ContactID</code>：联系人ID，string类型<br><code>MessageType</code>：消息类型，枚举类型，MessageBodyType<br><code>MessageContent</code>：消息内容，string类型<br><code>CreateTime</code>：消息时间，int类型 </p>
+</li>
+</ul>
+<h3 id="高级功能">高级功能<a class="anchor" aria-hidden="true" href="#高级功能">#</a></h3><h4 id="文本翻译">文本翻译<a class="anchor" aria-hidden="true" href="#文本翻译">#</a></h4><p>将文本翻译成指定语言的文本，异步返回结果</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TranslateText</span>(<span class="hljs-params"> <span class="hljs-keyword">string</span> text, LanguageCode destLangCode, LanguageCode srcLangCode,Action&lt;StatusCode,<span class="hljs-keyword">string</span>, LanguageCode, LanguageCode&gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>text</code>:文本<br><code>destLangCode</code> 目标语言<br><code>srcLangCode</code>: 原语言<br><code>Action&lt;StatusCode,string,LanguageCode,LanguageCode&gt;</code> 回调</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;StatusCode,string,LanguageCode,LanguageCode&gt; 参数：<br><code>ErrorCode</code> 错误码<br><code>string</code> text 目标语言文本<br><code>LanguageCode</code> srcLangCode 原语言,枚举类型<br><code>LanguageCode</code> destLangCode 目标语言,枚举类型</p>
+</li>
+</ul>
+<h4 id="敏感词过滤">敏感词过滤<a class="anchor" aria-hidden="true" href="#敏感词过滤">#</a></h4><p>考虑到客户端可能需要传递一些自定义消息，关键字过滤方法就直接提供出来，客户端可以选择是否过滤关键字，并且可以根据匹配到的等级能进行广告过滤。比如<code>level</code>返回的值为&#39;2&#39;表示广告，那么可以在发送时选择不发送，接收放可以选择不展示。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">string</span> <span class="hljs-title">GetFilterText</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> strSource, <span class="hljs-keyword">int</span> level = <span class="hljs-number">0</span></span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>strSource</code>：消息原文<br><code>level</code>：可选参数，匹配的策略词等级，默认为0，<code>0</code>表示正常，其余值是按需求可配</p>
+</li>
+<li><p>返回值：</p>
+<p>过滤关键字后的消息，敏感字会替换为&quot;*&quot;</p>
+</li>
+</ul>
+<h2 id="游戏暂停恢复">游戏暂停恢复<a class="anchor" aria-hidden="true" href="#游戏暂停恢复">#</a></h2><h3 id="游戏暂停通知">游戏暂停通知<a class="anchor" aria-hidden="true" href="#游戏暂停通知">#</a></h3><p>建议游戏放入后台时通知该接口，以便于得到更好重连效果；<br>调用OnPause(false),在游戏暂停后依旧接收IM消息；<br>调用OnPause(true),在游戏恢复运行时会主动拉取暂停期间未接收的消息，由SetReceiveMessageListener设置的监听收到消息。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnPause</span>(<span class="hljs-params"><span class="hljs-keyword">bool</span> pauseReceiveMessage</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>pauseReceiveMessage</code>：是否暂停接收IM消息，true-暂停接收 false-不暂停接收  </p>
+</li>
+</ul>
+<h3 id="游戏恢复运行通知">游戏恢复运行通知<a class="anchor" aria-hidden="true" href="#游戏恢复运行通知">#</a></h3><p>建议游戏恢复运行时通知该接口，以便于得到更好重连效果。建议添加到全局MonoBehaviour的OnApplicationPause通知里。</p>
+<ul>
+<li>原型：<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnResume</span>(<span class="hljs-params"></span>)</span>
+</code></pre>
+</li>
+</ul>
+<h2 id="用户举报和禁言">用户举报和禁言<a class="anchor" aria-hidden="true" href="#用户举报和禁言">#</a></h2><h3 id="用户举报">用户举报<a class="anchor" aria-hidden="true" href="#用户举报">#</a></h3><p><code>Accusation</code>接口提供举报功能，对用户违规的发言内容进行举报，管理员在后台进行审核处理并将结果通知用户，结果通过SetAccusationListener (Action&lt;YouMe.StatusCode, IMAccusationInfo&gt; listener)设置的监听返回。</p>
+<ul>
+<li><p>原型</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">Accusation</span> (<span class="hljs-params"><span class="hljs-keyword">string</span> userID, ChatType chatType, <span class="hljs-keyword">int</span> reason, <span class="hljs-keyword">string</span> description, <span class="hljs-keyword">string</span> extraParam</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>userID</code>：被举报用户ID<br><code>chatType</code>：来源（私聊/频道）<br><code>reason</code>：原因，由用户自定义枚举<br><code>description</code>：原因描述<br><code>extraParam</code>：附加信息JSON格式 ({&quot;nickname&quot;:&quot;&quot;,&quot;server_area&quot;:&quot;&quot;,&quot;level&quot;:&quot;&quot;,&quot;vip_level&quot;:&quot;&quot;}）</p>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a> </p>
+</li>
+<li><p>举报处理结果通知<br>当管理员对举报进行审核处理后，会将举办处理结果通知用户</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, IMAccusationInfo&gt; 参数：<br><code>StatusCode</code>：code 错误码<br><code>IMAccusationInfo</code>：accusationInfo 举报反馈信息</p>
+<p>IMAccusationInfo有如下属性：<br><code>UserID</code>：被举报用户ID，string类型<br><code>AccusationTime</code>：举报时间，uint类型<br><code>AccusationDealResult</code>：处理结果，枚举类型，</p>
+<pre><code>                    IMAccusationDealResult.IGNORE=<span class="hljs-number">0</span>,          <span class="hljs-comment">//忽略</span>
+                    IMAccusationDealResult.WARNING=<span class="hljs-number">1</span>,         <span class="hljs-comment">//警告                                         </span>
+                    IMAccusationDealResult.FROBIDDEN_SPEAK=<span class="hljs-number">2</span>, <span class="hljs-comment">//禁言                                                                                                 </span>
+                    IMAccusationDealResult.UNKNOWN=<span class="hljs-number">3</span>          <span class="hljs-comment">//未知</span>
+</code></pre></li>
+</ul>
+<h3 id="禁言查询">禁言查询<a class="anchor" aria-hidden="true" href="#禁言查询">#</a></h3><p>用户查询所在频道的禁言状态。  </p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetForbiddenSpeakInfo</span> (<span class="hljs-params">Action&lt;YouMe.StatusCode, List&lt;ForbiddenSpeakInfo&gt; &gt; callback</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>Action&lt;YouMe.StatusCode, List&lt;ForbiddenSpeakInfo&gt;&gt;</code>: 获取禁言状态的回调通知    </p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, List&lt;ForbiddenSpeakInfo&gt;&gt;  参数：<br><code>StatusCode</code>：code 错误码<br><code>List&lt;ForbiddenSpeakInfo&gt;</code>：forbidInfoList 禁言状态列表,每一个代表一个禁言状态</p>
+<p>ForbiddenSpeakInfo有如下属性：<br><code>ChannelID</code>：频道ID，string类型<br><code>IsForbidRoom</code>：是否为禁言房间，bool类型<br><code>ReasonType</code>：禁言原因，int类型，0-未知，1-发广告，2-侮辱，3-政治敏感，4-恐怖主义，5-反动，6-色情，7-其它<br><code>EndTime</code>：禁言结束时间，ulong类型</p>
+</li>
+</ul>
+<h2 id="公告管理">公告管理<a class="anchor" aria-hidden="true" href="#公告管理">#</a></h2><p>基本流程：申请开通公告功能-&gt;后台添加新公告然后设置公告发送时间,公告消息类型,发送时间,接收公告的频道等。-&gt;(客户端流程) 设置对应监听-&gt; 调用对应接口-&gt;回调接收</p>
+<h3 id="公告功能简述">公告功能简述<a class="anchor" aria-hidden="true" href="#公告功能简述">#</a></h3><p>1.公告发送由后台配置，如类型、周期、发送时间、内容、链接、目标频道、次数、起始结束时间等。</p>
+<p>2.公告三种类型：跑马灯，聊天框，置顶公告，<br>(1) 跑马灯，聊天框公告可设置发送时间，次数和间隔（从指定时间点开始隔固定间隔时间发送多次，界面展示及显示时长由客户端决定）；<br>(2) 置顶公告需设置开始和结束时间（该段时间内展示）。</p>
+<p>3.三种公告均有一次性、周期性两种循环属性：<br>  一次性公告，到达指定时间点，发送该条公告;<br>  周期性公告，跟一次性公告发送规则一致，但是可以设置发送周期（在每周哪几天的指定时间发送）。</p>
+<p>4.跑马灯与聊天框公告只有发送时间点在线的用户才能收到该公告，显示规则由客户端自己决定，两者区别主要是界面显示的区分。</p>
+<p>5.置顶公告有显示起始和结束时间，表示该时段内显示，公告发送时间点在线的用户会收到该公告，公告发送时间点未在线用户，在公告显示时段登录，登录后可通过查询公告接口查到该公告。</p>
+<p>6.公告撤销<br>仅针对置顶公告，公告显示时段撤销公告，客户端会收到公告撤销通知，界面进行更新。</p>
+<h3 id="接收公告">接收公告<a class="anchor" aria-hidden="true" href="#接收公告">#</a></h3><p>管理员在后台发布公告，当到达指定时间会收到该公告，界面根据不同类型的公告进行展示。<br>设置接收公告的监听SetRecvNoticeListener (Action&lt;YIMEngine.Notice&gt; listener)，可以接收到公告</p>
+<ul>
+<li><p>示例：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnRecvNotice</span>(<span class="hljs-params">YIMEngine.Notice notice</span>)</span>{...}
+</code></pre>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YIMEngine.Notice&gt; 参数：<br><code>Notice</code>：notice 公告信息</p>
+<p>Notice有如下属性：<br><code>NoticeID</code>：公告ID，ulong类型<br><code>NoticeType</code>：公告类型，int类型<br><code>ChannelID</code>：频道ID，string类型<br><code>Content</code>：公告内容，string类型<br><code>LinkText</code>：公告链接文本，string类型<br><code>LinkAddr</code>：公告链接地址，string类型<br><code>BeginTime</code>：公告开始时间，uint类型<br><code>EndTime</code>：公告结束时间，uint类型</p>
+</li>
+</ul>
+<h3 id="撤销公告">撤销公告<a class="anchor" aria-hidden="true" href="#撤销公告">#</a></h3><p>对于某些类型的公告（如置顶公告），需要在界面展示一段时间，如果管理员在该时间段执行撤销该公告，会收到撤销公告通知，界面进行相应更新。<br>设置撤销公告的监听SetCancelNoticeListener (Action&lt;ulong, string&gt; listener)，可以接收到撤销公告通知</p>
+<ul>
+<li><p>示例：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OnCancelNotice</span>(<span class="hljs-params"><span class="hljs-keyword">ulong</span> noticeID, <span class="hljs-keyword">string</span> channelID</span>)</span>{...}
+</code></pre>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;ulong, string&gt; 参数：<br><code>ulong</code>：noticeID 公告ID<br><code>string</code>：channelID 频道ID</p>
+</li>
+</ul>
+<h3 id="查询公告">查询公告<a class="anchor" aria-hidden="true" href="#查询公告">#</a></h3><p>公告在配置的时间点下发到客户端，对于某些类型的公告（如置顶公告）需要在某个时间段显示在，如果用户在公告下发时间点未在线，而在公告展示时间段内登录，应用可根据自己的需要决定是否展示该公告，<code>QueryNotice</code>查询公告，公告结果通过SetRecvNoticeListener (Action&lt;YIMEngine.Notice&gt; listener)设置的监听返回。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">QueryNotice</span> (<span class="hljs-params"></span>)</span>
+</code></pre>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+</ul>
+<h2 id="地理位置">地理位置<a class="anchor" aria-hidden="true" href="#地理位置">#</a></h2><h3 id="获取当前地理位置">获取当前地理位置<a class="anchor" aria-hidden="true" href="#获取当前地理位置">#</a></h3><p>获取用户当前地理位置。</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> StatusCode <span class="hljs-title">GetCurrentLocation</span> (<span class="hljs-params"></span>)</span>
+</code></pre>
+</li>
+<li><p>返回：</p>
+<p><code>StatusCode</code>：错误码，详细描述见<a href="#错误码定义">错误码定义</a></p>
+</li>
+<li><p>回调：</p>
+<p>当前的地理位置信息由SetGetCurrentLocationListener (Action&lt;YouMe.StatusCode, GeographyLocation&gt; listener)设置的监听接收。</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, GeographyLocation&gt; 参数：<br><code>StatusCode</code>：code 错误码<br><code>GeographyLocation</code>：location 位置信息</p>
+<p>GeographyLocation有如下属性：<br><code>DistrictCode</code>：地理区域编码，可根据此参数组合附近频道id，uint类型<br><code>Country</code>：国家，string类型<br><code>Province</code>：省份，string类型<br><code>City</code>：城市，string类型<br><code>DistrictCounty</code>：区县，string类型<br><code>Street</code>：街道，string类型<br><code>Longitude</code>：经度，double类型<br><code>Latitude</code>：纬度，double类型</p>
+</li>
+</ul>
+<h3 id="设置地理位置更新间隔">设置地理位置更新间隔<a class="anchor" aria-hidden="true" href="#设置地理位置更新间隔">#</a></h3><p>从资源和耗电方面考虑，SDK不自动监听地理位置的变化，如果调用方有需要可调用<code>YIMLocationManager</code>的<code>SetUpdateInterval</code>接口，设置更新时间间隔，SDK会按设定的时间间隔监听位置变化并通知上层。（如果应用对地理位置变化关注度不大，最好不要设置自动更新）</p>
+<ul>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">SetUpdateInterval</span> (<span class="hljs-params"><span class="hljs-keyword">uint</span> interval</span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>interval</code>:更新间隔时间 分钟</p>
+</li>
+<li><p>回调：</p>
+<p>按照设定的时间间隔将当前的地理位置信息传给SetGetCurrentLocationListener (Action&lt;YouMe.StatusCode, GeographyLocation&gt; listener)设置的监听。</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, GeographyLocation&gt; 参数：<br><code>StatusCode</code>：code 错误码<br><code>GeographyLocation</code>：location 位置信息</p>
+<p>GeographyLocation有如下属性：<br><code>DistrictCode</code>：地理区域编码，可根据此参数组合附近频道id，uint类型<br><code>Country</code>：国，string类型<br><code>Province</code>：省，string类型<br><code>City</code>：城市，string类型<br><code>DistrictCounty</code>：区县，string类型<br><code>Street</code>：街，string类型<br><code>Longitude</code>：经度，double类型<br><code>Latitude</code>：纬度，double类型</p>
+</li>
+</ul>
+<h3 id="获取附近的用户">获取附近的用户<a class="anchor" aria-hidden="true" href="#获取附近的用户">#</a></h3><p>获取附近的目标(人 房间) ，若需要此功能，请联系我们开启LBS服务。若已开启服务，此功能生效的前提是自己和附近的人都获取了自己的地理位置，即调用了IM的获取当前地理位置接口。</p>
+<ul>
+<li><p>条件：需要开通LBS定位服务才能使用 </p>
+</li>
+<li><p>原型：</p>
+<pre><code class="lang-csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">GetNearbyObjects</span> (<span class="hljs-params"><span class="hljs-keyword">int</span> count, <span class="hljs-keyword">string</span> serverAreaID, Action&lt;YouMe.StatusCode, IMNearbyObjectInfo&gt; callback, DistrictLevel districtlevel = YIMEngine.DistrictLevel.DISTRICT_UNKNOW, <span class="hljs-keyword">bool</span> resetStartDistance = <span class="hljs-literal">false</span></span>)</span>
+</code></pre>
+</li>
+<li><p>参数：</p>
+<p><code>count</code>: 获取附近的目标  获取数量（一次最大200）<br><code>serverAreaID</code>：区服（对应设置用户信息中的区服，如果只需要获得本服务器的，要填；否则填&quot;&quot;）<br><code>Action&lt;YouMe.StatusCode, IMNearbyObjectInfo&gt;</code>：获取附近用户的回调通知<br><code>districtlevel</code>：可选参数，行政区划等级，默认值不划分等级<br><code>resetStartDistance</code>：可选参数，是否重置查找起始距离，默认是不重置，true-从距自己0米开始查找，false-从上次查找返回的最远用户开始查找</p>
+</li>
+<li><p>备注：</p>
+<p>Action&lt;YouMe.StatusCode, IMNearbyObjectInfo&gt; 参数：<br><code>StatusCode</code>：code 错误码<br><code>IMNearbyObjectInfo</code>：nearbyObj 附近用户信息</p>
+<p>IMNearbyObjectInfo有如下属性：<br><code>StartDistance</code>：搜索的起始距离，uint类型<br><code>EndDistance</code>：搜索的结束距离，uint类型<br><code>NeighbourList</code>：附近的人地理位置信息列表，List&lt;RelativeLocation&gt;类型</p>
+<p>RelativeLocation有如下属性：<br><code>Distance</code>：与自己的距离，uint类型<br><code>UserID</code>：附近用户ID，string类型<br><code>Country</code>：国家，string类型<br><code>Province</code>：省份，string类型<br><code>City</code>：城市，string类型<br><code>DistrictCounty</code>：区县，string类型<br><code>Street</code>：街道，string类型<br><code>Longitude</code>：经度，double类型<br><code>Latitude</code>：纬度，double类型</p>
+</li>
+</ul>
+<h2 id="服务器部署地区定义">服务器部署地区定义<a class="anchor" aria-hidden="true" href="#服务器部署地区定义">#</a></h2><pre><code class="lang-csharp">ServerZone.China = <span class="hljs-number">0</span>         <span class="hljs-comment">// 中国</span>
+ServerZone.Singapore = <span class="hljs-number">1</span>     <span class="hljs-comment">// 新加坡  </span>
+ServerZone.America = <span class="hljs-number">2</span>        <span class="hljs-comment">// 美国</span>
+ServerZone.HongKong = <span class="hljs-number">3</span>        <span class="hljs-comment">// 香港</span>
+ServerZone.Korea = <span class="hljs-number">4</span>            <span class="hljs-comment">// 韩国</span>
+ServerZone.Australia = <span class="hljs-number">5</span>     <span class="hljs-comment">// 澳洲</span>
+ServerZone.Deutschland = <span class="hljs-number">6</span>    <span class="hljs-comment">// 德国</span>
+ServerZone.Brazil = <span class="hljs-number">7</span>          <span class="hljs-comment">// 巴西</span>
+ServerZone.India = <span class="hljs-number">8</span>             <span class="hljs-comment">// 印度</span>
+ServerZone.Japan = <span class="hljs-number">9</span>           <span class="hljs-comment">// 日本</span>
+ServerZone.Ireland = <span class="hljs-number">10</span>       <span class="hljs-comment">// 爱尔兰</span>
+ServerZone.ServerZone_Unknow = <span class="hljs-number">9999</span>
+</code></pre>
+<h2 id="错误码定义">错误码定义<a class="anchor" aria-hidden="true" href="#错误码定义">#</a></h2><table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>StatusCode.Success = 0</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>StatusCode.EngineNotInit = 1</td>
+<td>IM SDK未初始化</td>
+</tr>
+<tr>
+<td>StatusCode.NotLogin = 2</td>
+<td>IM SDK未登录</td>
+</tr>
+<tr>
+<td>StatusCode.ParamInvalid = 3</td>
+<td>无效的参数</td>
+</tr>
+<tr>
+<td>StatusCode.TimeOut = 4</td>
+<td>超时</td>
+</tr>
+<tr>
+<td>StatusCode.StatusError = 5</td>
+<td>状态错误</td>
+</tr>
+<tr>
+<td>StatusCode.SDKInvalid = 6</td>
+<td>Appkey无效</td>
+</tr>
+<tr>
+<td>StatusCode.AlreadyLogin = 7</td>
+<td>已经登录</td>
+</tr>
+<tr>
+<td>StatusCode.LoginInvalid = 1001</td>
+<td>登录无效</td>
+</tr>
+<tr>
+<td>StatusCode.ServerError = 8</td>
+<td>服务器错误</td>
+</tr>
+<tr>
+<td>StatusCode.NetError = 9</td>
+<td>网络错误</td>
+</tr>
+<tr>
+<td>StatusCode.LoginSessionError = 10</td>
+<td>登录状态出错</td>
+</tr>
+<tr>
+<td>StatusCode.NotStartUp = 11</td>
+<td>SDK未启动</td>
+</tr>
+<tr>
+<td>StatusCode.FileNotExist = 12</td>
+<td>文件不存在</td>
+</tr>
+<tr>
+<td>StatusCode.SendFileError = 13</td>
+<td>文件发送出错</td>
+</tr>
+<tr>
+<td>StatusCode.UploadFailed = 14</td>
+<td>文件上传失败</td>
+</tr>
+<tr>
+<td>StatusCode.UsernamePasswordError = 15</td>
+<td>用户名密码和最后一次登录成功的不匹配</td>
+</tr>
+<tr>
+<td>StatusCode.UserStatusError = 16</td>
+<td>状态错误，一般是非登录状态调用了需要登录后才能操作的接口</td>
+</tr>
+<tr>
+<td>StatusCode.MessageTooLong = 17</td>
+<td>消息太长，主控制在2k以内</td>
+</tr>
+<tr>
+<td>StatusCode.ReceiverTooLong = 18</td>
+<td>接收方ID过长(检查频道名)</td>
+</tr>
+<tr>
+<td>StatusCode.InvalidChatType = 19</td>
+<td>无效聊天类型(私聊、聊天室)</td>
+</tr>
+<tr>
+<td>StatusCode.InvalidReceiver = 20</td>
+<td>无效用户ID（私聊接受者为数字格式ID）</td>
+</tr>
+<tr>
+<td>StatusCode.UnknowError = 21</td>
+<td>请求错误，常见的情况是指定的接收者不存在</td>
+</tr>
+<tr>
+<td>StatusCode.InvalidAppkey = 22</td>
+<td>APPKEY校验不通过</td>
+</tr>
+<tr>
+<td>StatusCode.ForbiddenSpeak = 23</td>
+<td>被禁言</td>
+</tr>
+<tr>
+<td>StatusCode.CreateFileFailed = 24</td>
+<td>创建文件失败</td>
+</tr>
+<tr>
+<td>StatusCode.UnsupportFormat = 25</td>
+<td>不支持的文件格式</td>
+</tr>
+<tr>
+<td>StatusCode.ReceiverEmpty = 26</td>
+<td>接收方为空</td>
+</tr>
+<tr>
+<td>StatusCode.RoomIDTooLong = 27</td>
+<td>频道名太长，不要超过128字节</td>
+</tr>
+<tr>
+<td>StatusCode.ContentInvalid = 28,</td>
+<td>聊天内容严重非法</td>
+</tr>
+<tr>
+<td>StatusCode.NoLocationAuthrize = 29,</td>
+<td>未打开定位权限</td>
+</tr>
+<tr>
+<td>StatusCode.UnknowLocation = 30,</td>
+<td>未知位置</td>
+</tr>
+<tr>
+<td>StatusCode.Unsupport = 31,</td>
+<td>不支持该接口</td>
+</tr>
+<tr>
+<td>StatusCode.NoAudioDevice = 32,</td>
+<td>无音频设备</td>
+</tr>
+<tr>
+<td>StatusCode.AudioDriver = 33,</td>
+<td>音频驱动问题</td>
+</tr>
+<tr>
+<td>StatusCode.DeviceStatusInvalid = 34,</td>
+<td>设备状态错误</td>
+</tr>
+<tr>
+<td>StatusCode.ResolveFileError = 35,</td>
+<td>文件解析错误</td>
+</tr>
+<tr>
+<td>StatusCode.ReadWriteFileError = 36,</td>
+<td>文件读写错误</td>
+</tr>
+<tr>
+<td>StatusCode.NoLangCode = 37,</td>
+<td>语言编码错误</td>
+</tr>
+<tr>
+<td>StatusCode.TranslateUnable = 38,</td>
+<td>翻译接口不可用</td>
+</tr>
+<tr>
+<td>StatusCode.SpeechAccentInvalid = 39,</td>
+<td>语音识别方言无效</td>
+</tr>
+<tr>
+<td>StatusCode.SpeechLanguageInvalid = 40,</td>
+<td>语音识别语言无效</td>
+</tr>
+<tr>
+<td>StatusCode.HasIllegalText = 41,</td>
+<td>消息含非法字符</td>
+</tr>
+<tr>
+<td>StatusCode.AdvertisementMessage = 42,</td>
+<td>消息涉嫌广告</td>
+</tr>
+<tr>
+<td>StatusCode.AlreadyBlock = 43,</td>
+<td>用户已经被屏蔽</td>
+</tr>
+<tr>
+<td>StatusCode.NotBlock = 44,</td>
+<td>用户未被屏蔽</td>
+</tr>
+<tr>
+<td>StatusCode.MessageBlocked = 45,</td>
+<td>消息被屏蔽</td>
+</tr>
+<tr>
+<td>StatusCode.LocationTimeout = 46,</td>
+<td>定位超时</td>
+</tr>
+<tr>
+<td>StatusCode.NotJoinRoom = 47,</td>
+<td>未加入该房间</td>
+</tr>
+<tr>
+<td>StatusCode.LoginTokenInvalid = 48,</td>
+<td>登录token错误</td>
+</tr>
+<tr>
+<td>StatusCode.CreateDirectoryFailed = 49,</td>
+<td>创建目录失败</td>
+</tr>
+<tr>
+<td>StatusCode.InitFailed = 50,</td>
+<td>初始化失败</td>
+</tr>
+<tr>
+<td>StatusCode.Disconnect = 51,</td>
+<td>与服务器断开</td>
+</tr>
+<tr>
+<td>StatusCode_ALREADYFRIENDS = 1000,</td>
+<td>服务器错误</td>
+</tr>
+<tr>
+<td>StatusCode_LoginInvalid = 1001,</td>
+<td>服务器错误登录无效</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_Start = 2000</td>
+<td>开始录音</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_Fail = 2001</td>
+<td>录音失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_DownloadFail = 2002</td>
+<td>语音消息文件下载失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_GetUploadTokenFail = 2003</td>
+<td>获取语音消息Token失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_UploadFail = 2004</td>
+<td>语音消息文件上传失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_NotSpeech = 2005</td>
+<td>没有录音内容</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_DeviceStatusError = 2006</td>
+<td>音频设备状态错误</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_IsSpeeching = 2007</td>
+<td>已经在录音中</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_FileNotExist = 2008</td>
+<td>找不到录音生成的文件</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_ReachMaxDuration = 2009</td>
+<td>达到语音最大时长限制</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_SpeechTooShort = 2010</td>
+<td>语音时长太短</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_StartAudioRecordFailed = 2011</td>
+<td>启动语音失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_SpeechTimeout = 2012</td>
+<td>音频输入超时</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_IsPlaying = 2013</td>
+<td>正在播放</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_NotStartPlay = 2014</td>
+<td>未开始播放</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_CancelPlay = 2015</td>
+<td>主动取消播放</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_NotStartRecord = 2016,</td>
+<td>未开始语音</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_NotInit = 2017,</td>
+<td>未初始化</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_InitFailed = 2018,</td>
+<td>初始化失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_Authorize = 2019,</td>
+<td>录音权限</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_StartRecordFailed = 2020,</td>
+<td>启动录音失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_StopRecordFailed = 2021,</td>
+<td>停止录音失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_UnsupprtFormat = 2022,</td>
+<td>不支持的格式</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_ResolveFileError = 2023,</td>
+<td>解析文件错误</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_ReadWriteFileError = 2024,</td>
+<td>读写文件错误</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_ConvertFileFailed = 2025,</td>
+<td>文件转换失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_NoAudioDevice = 2026,</td>
+<td>无音频设备</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_NoDriver = 2027,</td>
+<td>驱动问题</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_StartPlayFailed = 2028,</td>
+<td>启动播放失败</td>
+</tr>
+<tr>
+<td>StatusCode.PTT_StopPlayFailed = 2029,</td>
+<td>停止播放失败</td>
+</tr>
+<tr>
+<td>StatusCode.Fail = 10000</td>
+<td>语音服务启动失败</td>
+</tr>
+<tr>
+<td>StatusCode.START_DOWNLOAD_FAIL = 20001</td>
+<td>开始下载失败</td>
+</tr>
+<tr>
+<td>StatusCode.IS_WAITING_DOWNLOAD = 20002</td>
+<td>下载队列中待下载</td>
+</tr>
+<tr>
+<td>StatusCode.IS_WAITING_UPLOAD = 20003</td>
+<td>上传队列中待上传</td>
+</tr>
+<tr>
+<td>StatusCode.IS_WAITING_SEND = 20004</td>
+<td>消息队列中待发送</td>
+</tr>
+<tr>
+<td>StatusCode.QUERY_RECORDS_FAIL = 20005</td>
+<td>查询历史记录失败</td>
+</tr>
+<tr>
+<td>StatusCode.GET_CONTACTS_FAIL = 20006</td>
+<td>获取联系人列表失败</td>
+</tr>
+<tr>
+<td>StatusCode.GET_USER_INFO_FAIL = 20007</td>
+<td>获取用户信息失败</td>
+</tr>
+<tr>
+<td>StatusCode.QUERY_USER_STATUS_FAIL = 20008</td>
+<td>查询用户状态失败</td>
+</tr>
+<tr>
+<td>StatusCode.START_PLAY_FAIL = 20009</td>
+<td>开始播放语音失败</td>
+</tr>
+<tr>
+<td>StatusCode.STOPPLAY_FAIL_BEFORE_START = 20010</td>
+<td>调用开始播放前停止播放失败</td>
+</tr>
+<tr>
+<td>StatusCode.GET_CURRENT_LOCATION_FAIL = 20011</td>
+<td>获取当前地理位置失败</td>
+</tr>
+<tr>
+<td>StatusCode.GET_NERABY_OBJECTS_FAIL = 20012</td>
+<td>获取附近人失败</td>
+</tr>
+<tr>
+<td>StatusCode.GET_MICROPHONE_STATUS_FAIL = 20013</td>
+<td>获取麦克风状态失败</td>
+</tr>
+<tr>
+<td>StatusCode.REPORT_FAIL = 20014</td>
+<td>举报失败</td>
+</tr>
+<tr>
+<td>StatusCode.GET_FORBIDDEN_SPEAKINFO_FAIL = 20015</td>
+<td>获取禁言状态失败</td>
+</tr>
+<tr>
+<td>StatusCode.BLOCK_USER_FAIL = 20016</td>
+<td>屏蔽用户失败</td>
+</tr>
+<tr>
+<td>StatusCode.UNBLOCK_ALL_USER_FAIL = 20017</td>
+<td>解除所有的用户屏蔽失败</td>
+</tr>
+<tr>
+<td>StatusCode.GET_BLOCK_USERS_FAIL = 20018</td>
+<td>获取屏蔽用户失败</td>
+</tr>
+<tr>
+<td>StatusCode.HAS_NO_MICROPHONE_AUTHORITY = 20019</td>
+<td>没有麦克风权限</td>
+</tr>
+</tbody>
+</table>
+</section>                  </div>                </section>              </section>              <footer class="bg-gray">                <section id="copyright" class="grid-footer container grid-960">                  <p>                    Copyright © 2017 <a href="http://www.youme.im" target="_blank">YouMe</a>. All Rights Reserved.                  </p>                </section>              </footer>            </body>            <script>!function(e){if("object"==typeof exports&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var t;t="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,t.Clipboard=e()}}(function(){var e,t,n;return function e(t,n,i){function o(a,c){if(!n[a]){if(!t[a]){var l="function"==typeof require&&require;if(!c&&l)return l(a,!0);if(r)return r(a,!0);var s=new Error("Cannot find module '"+a+"'");throw s.code="MODULE_NOT_FOUND",s}var u=n[a]={exports:{}};t[a][0].call(u.exports,function(e){var n=t[a][1][e];return o(n?n:e)},u,u.exports,e,t,n,i)}return n[a].exports}for(var r="function"==typeof require&&require,a=0;a<i.length;a++)o(i[a]);return o}({1:[function(e,t,n){function i(e,t){for(;e&&e!==document;){if(e.matches(t))return e;e=e.parentNode}}if(Element&&!Element.prototype.matches){var o=Element.prototype;o.matches=o.matchesSelector||o.mozMatchesSelector||o.msMatchesSelector||o.oMatchesSelector||o.webkitMatchesSelector}t.exports=i},{}],2:[function(e,t,n){function i(e,t,n,i,r){var a=o.apply(this,arguments);return e.addEventListener(n,a,r),{destroy:function(){e.removeEventListener(n,a,r)}}}function o(e,t,n,i){return function(n){n.delegateTarget=r(n.target,t),n.delegateTarget&&i.call(e,n)}}var r=e("./closest");t.exports=i},{"./closest":1}],3:[function(e,t,n){n.node=function(e){return void 0!==e&&e instanceof HTMLElement&&1===e.nodeType},n.nodeList=function(e){var t=Object.prototype.toString.call(e);return void 0!==e&&("[object NodeList]"===t||"[object HTMLCollection]"===t)&&"length"in e&&(0===e.length||n.node(e[0]))},n.string=function(e){return"string"==typeof e||e instanceof String},n.fn=function(e){var t=Object.prototype.toString.call(e);return"[object Function]"===t}},{}],4:[function(e,t,n){function i(e,t,n){if(!e&&!t&&!n)throw new Error("Missing required arguments");if(!c.string(t))throw new TypeError("Second argument must be a String");if(!c.fn(n))throw new TypeError("Third argument must be a Function");if(c.node(e))return o(e,t,n);if(c.nodeList(e))return r(e,t,n);if(c.string(e))return a(e,t,n);throw new TypeError("First argument must be a String, HTMLElement, HTMLCollection, or NodeList")}function o(e,t,n){return e.addEventListener(t,n),{destroy:function(){e.removeEventListener(t,n)}}}function r(e,t,n){return Array.prototype.forEach.call(e,function(e){e.addEventListener(t,n)}),{destroy:function(){Array.prototype.forEach.call(e,function(e){e.removeEventListener(t,n)})}}}function a(e,t,n){return l(document.body,e,t,n)}var c=e("./is"),l=e("delegate");t.exports=i},{"./is":3,delegate:2}],5:[function(e,t,n){function i(e){var t;if("SELECT"===e.nodeName)e.focus(),t=e.value;else if("INPUT"===e.nodeName||"TEXTAREA"===e.nodeName)e.focus(),e.setSelectionRange(0,e.value.length),t=e.value;else{e.hasAttribute("contenteditable")&&e.focus();var n=window.getSelection(),i=document.createRange();i.selectNodeContents(e),n.removeAllRanges(),n.addRange(i),t=n.toString()}return t}t.exports=i},{}],6:[function(e,t,n){function i(){}i.prototype={on:function(e,t,n){var i=this.e||(this.e={});return(i[e]||(i[e]=[])).push({fn:t,ctx:n}),this},once:function(e,t,n){function i(){o.off(e,i),t.apply(n,arguments)}var o=this;return i._=t,this.on(e,i,n)},emit:function(e){var t=[].slice.call(arguments,1),n=((this.e||(this.e={}))[e]||[]).slice(),i=0,o=n.length;for(i;i<o;i++)n[i].fn.apply(n[i].ctx,t);return this},off:function(e,t){var n=this.e||(this.e={}),i=n[e],o=[];if(i&&t)for(var r=0,a=i.length;r<a;r++)i[r].fn!==t&&i[r].fn._!==t&&o.push(i[r]);return o.length?n[e]=o:delete n[e],this}},t.exports=i},{}],7:[function(t,n,i){!function(o,r){if("function"==typeof e&&e.amd)e(["module","select"],r);else if("undefined"!=typeof i)r(n,t("select"));else{var a={exports:{}};r(a,o.select),o.clipboardAction=a.exports}}(this,function(e,t){"use strict";function n(e){return e&&e.__esModule?e:{default:e}}function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var o=n(t),r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},a=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),c=function(){function e(t){i(this,e),this.resolveOptions(t),this.initSelection()}return a(e,[{key:"resolveOptions",value:function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action=t.action,this.emitter=t.emitter,this.target=t.target,this.text=t.text,this.trigger=t.trigger,this.selectedText=""}},{key:"initSelection",value:function e(){this.text?this.selectFake():this.target&&this.selectTarget()}},{key:"selectFake",value:function e(){var t=this,n="rtl"==document.documentElement.getAttribute("dir");this.removeFake(),this.fakeHandlerCallback=function(){return t.removeFake()},this.fakeHandler=document.body.addEventListener("click",this.fakeHandlerCallback)||!0,this.fakeElem=document.createElement("textarea"),this.fakeElem.style.fontSize="12pt",this.fakeElem.style.border="0",this.fakeElem.style.padding="0",this.fakeElem.style.margin="0",this.fakeElem.style.position="absolute",this.fakeElem.style[n?"right":"left"]="-9999px";var i=window.pageYOffset||document.documentElement.scrollTop;this.fakeElem.addEventListener("focus",window.scrollTo(0,i)),this.fakeElem.style.top=i+"px",this.fakeElem.setAttribute("readonly",""),this.fakeElem.value=this.text,document.body.appendChild(this.fakeElem),this.selectedText=(0,o.default)(this.fakeElem),this.copyText()}},{key:"removeFake",value:function e(){this.fakeHandler&&(document.body.removeEventListener("click",this.fakeHandlerCallback),this.fakeHandler=null,this.fakeHandlerCallback=null),this.fakeElem&&(document.body.removeChild(this.fakeElem),this.fakeElem=null)}},{key:"selectTarget",value:function e(){this.selectedText=(0,o.default)(this.target),this.copyText()}},{key:"copyText",value:function e(){var t=void 0;try{t=document.execCommand(this.action)}catch(e){t=!1}this.handleResult(t)}},{key:"handleResult",value:function e(t){this.emitter.emit(t?"success":"error",{action:this.action,text:this.selectedText,trigger:this.trigger,clearSelection:this.clearSelection.bind(this)})}},{key:"clearSelection",value:function e(){this.target&&this.target.blur(),window.getSelection().removeAllRanges()}},{key:"destroy",value:function e(){this.removeFake()}},{key:"action",set:function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"copy";if(this._action=t,"copy"!==this._action&&"cut"!==this._action)throw new Error('Invalid "action" value, use either "copy" or "cut"')},get:function e(){return this._action}},{key:"target",set:function e(t){if(void 0!==t){if(!t||"object"!==("undefined"==typeof t?"undefined":r(t))||1!==t.nodeType)throw new Error('Invalid "target" value, use a valid Element');if("copy"===this.action&&t.hasAttribute("disabled"))throw new Error('Invalid "target" attribute. Please use "readonly" instead of "disabled" attribute');if("cut"===this.action&&(t.hasAttribute("readonly")||t.hasAttribute("disabled")))throw new Error('Invalid "target" attribute. You can\'t cut text from elements with "readonly" or "disabled" attributes');this._target=t}},get:function e(){return this._target}}]),e}();e.exports=c})},{select:5}],8:[function(t,n,i){!function(o,r){if("function"==typeof e&&e.amd)e(["module","./clipboard-action","tiny-emitter","good-listener"],r);else if("undefined"!=typeof i)r(n,t("./clipboard-action"),t("tiny-emitter"),t("good-listener"));else{var a={exports:{}};r(a,o.clipboardAction,o.tinyEmitter,o.goodListener),o.clipboard=a.exports}}(this,function(e,t,n,i){"use strict";function o(e){return e&&e.__esModule?e:{default:e}}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}function a(e,t){if(!e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return!t||"object"!=typeof t&&"function"!=typeof t?e:t}function c(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function, not "+typeof t);e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,enumerable:!1,writable:!0,configurable:!0}}),t&&(Object.setPrototypeOf?Object.setPrototypeOf(e,t):e.__proto__=t)}function l(e,t){var n="data-clipboard-"+e;if(t.hasAttribute(n))return t.getAttribute(n)}var s=o(t),u=o(n),f=o(i),d=function(){function e(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(t,n,i){return n&&e(t.prototype,n),i&&e(t,i),t}}(),h=function(e){function t(e,n){r(this,t);var i=a(this,(t.__proto__||Object.getPrototypeOf(t)).call(this));return i.resolveOptions(n),i.listenClick(e),i}return c(t,e),d(t,[{key:"resolveOptions",value:function e(){var t=arguments.length>0&&void 0!==arguments[0]?arguments[0]:{};this.action="function"==typeof t.action?t.action:this.defaultAction,this.target="function"==typeof t.target?t.target:this.defaultTarget,this.text="function"==typeof t.text?t.text:this.defaultText}},{key:"listenClick",value:function e(t){var n=this;this.listener=(0,f.default)(t,"click",function(e){return n.onClick(e)})}},{key:"onClick",value:function e(t){var n=t.delegateTarget||t.currentTarget;this.clipboardAction&&(this.clipboardAction=null),this.clipboardAction=new s.default({action:this.action(n),target:this.target(n),text:this.text(n),trigger:n,emitter:this})}},{key:"defaultAction",value:function e(t){return l("action",t)}},{key:"defaultTarget",value:function e(t){var n=l("target",t);if(n)return document.querySelector(n)}},{key:"defaultText",value:function e(t){return l("text",t)}},{key:"destroy",value:function e(){this.listener.destroy(),this.clipboardAction&&(this.clipboardAction.destroy(),this.clipboardAction=null)}}]),t}(u.default);e.exports=h})},{"./clipboard-action":7,"good-listener":4,"tiny-emitter":6}]},{},[8])(8)});
+
+function resize(){
+  var heights = window.innerHeight;
+  document.querySelectorAll('.docs-nav')[0].style.height = heights + "px";
+}
+resize();
+window.onresize = function() {
+    resize();
+};
+var codebox = document.querySelectorAll('pre') || [];
+for (i = 0; i < codebox.length; ++i) {
+  codebox[i].insertAdjacentHTML('afterbegin', '<div class="copy-success">复制成功</div><button class="copyButton">COPY</button>');
+}
+var clipboard = new Clipboard('.copyButton', {
+  target: function(trigger) {
+    return trigger.nextElementSibling;
+  }
+});
+clipboard.on('success', function(e) {
+  var tip = e.trigger.previousElementSibling;
+  var code = e.trigger.nextElementSibling;
+  tip.style.display = 'block';
+  code.classList.add("mask");
+  setTimeout(function() {
+    tip.style.display = 'none';
+    code.classList.remove("mask");
+  }, 1000);
+});</script>            </html>
