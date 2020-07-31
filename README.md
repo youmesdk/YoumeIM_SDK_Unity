@@ -1,5 +1,7 @@
 # IM SDK for Unity3D 使用指南
 
+## IM SDK 常见问题->[IM FAQ详解](https://github.com/youmesdk/wiki/blob/master/IMFAQ.md)
+
 ## 导入SDK
 ### 导入IM插件包
 - 右键点击`Assets`->`Import Package`->`Custom Package…`->选中`im_unity_xxx.unitypackage`。
